@@ -1,0 +1,2228 @@
+%% ================================================================================
+%% This LaTeX file was created by AbiWord.                                         
+%% AbiWord is a free, Open Source word processor.                                  
+%% More information about AbiWord is available at http://www.abisource.com/        
+%% ================================================================================
+
+\documentclass[a4paper,portrait,12pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{calc}
+\usepackage{setspace}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[normalem]{ulem}
+%% Please revise the following command, if your babel
+%% package does not support en-US
+\usepackage[en]{babel}
+\usepackage{color}
+\usepackage{hyperref}
+ 
+\begin{document}
+
+
+\begin{flushleft}
+Architecture for a microwave trapped ion quantum
+\end{flushleft}
+
+
+\begin{flushleft}
+computer
+\end{flushleft}
+
+
+\begin{flushleft}
+Victory Omole
+\end{flushleft}
+
+
+\begin{flushleft}
+Iowa State University
+\end{flushleft}
+
+
+\begin{flushleft}
+104 Marston Hall 533 Morrill Rd.
+\end{flushleft}
+
+
+\begin{flushleft}
+Ames, IA 50011-2151
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+vtomole@iastate.edu
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+ABSTRACT
+\end{flushleft}
+
+
+\begin{flushleft}
+Quantum computing is a revolutionary field that has changed
+\end{flushleft}
+
+
+\begin{flushleft}
+the way we think about the theory of computation. Theoretically, these devices can solve certain problems that would
+\end{flushleft}
+
+
+\begin{flushleft}
+be intractable with the classical computers we use today.
+\end{flushleft}
+
+
+\begin{flushleft}
+Although physical implementations of quantum computers
+\end{flushleft}
+
+
+\begin{flushleft}
+have proved to be extremely difficult, researchers have been
+\end{flushleft}
+
+
+\begin{flushleft}
+making slow but noticeable progress in the last two decades.
+\end{flushleft}
+
+
+\begin{flushleft}
+Over the years, there have been plans to build large scale
+\end{flushleft}
+
+
+\begin{flushleft}
+quantum computers that would be able to scale from tens to
+\end{flushleft}
+
+
+\begin{flushleft}
+thousands, and even millions of qubits. There have also been
+\end{flushleft}
+
+
+\begin{flushleft}
+a countless number of architecture designs that would combine these physical implementations with implementationdependent instruction set architectures. One such design
+\end{flushleft}
+
+
+\begin{flushleft}
+for a large scale quantum computer is the microwave ion
+\end{flushleft}
+
+
+\begin{flushleft}
+trap quantum computer. An instruction set architecture
+\end{flushleft}
+
+
+\begin{flushleft}
+(ISA) for this design does not exist. In this paper I will
+\end{flushleft}
+
+
+\begin{flushleft}
+propose an ISA for this type of quantum computer. One
+\end{flushleft}
+
+
+\begin{flushleft}
+that combines the physical implementation of a trapped
+\end{flushleft}
+
+
+\begin{flushleft}
+ion microwave quantum computer with an ISA designed
+\end{flushleft}
+
+
+\begin{flushleft}
+by Rigetti Computing. This architecture will contain two
+\end{flushleft}
+
+
+\begin{flushleft}
+compilers. The first will transform the implementationindependent ISA to an implementation dependent one. The
+\end{flushleft}
+
+
+\begin{flushleft}
+second will be an error correcting compiler that will transform an implementation-independent ISA to an implementation dependent error correcting ISA.
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+CCS Concepts
+\end{flushleft}
+
+
+\begin{flushleft}
+$\bullet$Computer systems organizations $\rightarrow$ Quantum computing;
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Keywords
+\end{flushleft}
+
+
+\begin{flushleft}
+Computer architecture, Quantum computing, Compiler
+\end{flushleft}
+
+
+
+
+
+1.
+
+
+
+
+
+\begin{flushleft}
+INTRODUCTION
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Quantum computers can solve certain problems; such as
+\end{flushleft}
+
+
+\begin{flushleft}
+factoring and simulation of quantum systems, which can-
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Permission to make digital or hard copies of part or all of this work for personal or
+\end{flushleft}
+
+
+\begin{flushleft}
+classroom use is granted without fee provided that copies are not made or distributed
+\end{flushleft}
+
+
+\begin{flushleft}
+for profit or commercial advantage and that copies bear this notice and the full citation
+\end{flushleft}
+
+
+\begin{flushleft}
+on the first page. Copyrights for third-party components of this work must be honored.
+\end{flushleft}
+
+
+\begin{flushleft}
+For all other uses, contact the owner/author(s).
+\end{flushleft}
+
+
+\begin{flushleft}
+c 2017 Copyright held by the owner/author(s).
+\end{flushleft}
+
+
+
+
+
+
+
+
+\begin{flushleft}
+not be solved efficiently on classical computers. Quantum
+\end{flushleft}
+
+
+\begin{flushleft}
+computers can be generalized into two categories. Nearterm quantum computers, and long term-quantum computers. Near-term quantum computers are computers that will
+\end{flushleft}
+
+
+\begin{flushleft}
+be realized in the next 5 to 10 years. They are composed
+\end{flushleft}
+
+
+\begin{flushleft}
+of tens to hundreds of qubits. Long term quantum computers could potentially be realized in a few decades. They
+\end{flushleft}
+
+
+\begin{flushleft}
+will contain thousands to millions of qubits. This paper will
+\end{flushleft}
+
+
+\begin{flushleft}
+address both types of computers.
+\end{flushleft}
+
+
+\begin{flushleft}
+Researchers at the Department of Physics and Astronomy at the University of Sussex have recently published a
+\end{flushleft}
+
+
+\begin{flushleft}
+blueprint for a large scale trapped ion quantum computer
+\end{flushleft}
+
+
+\begin{flushleft}
+[5]. This computer can serve as a near-term and long-term
+\end{flushleft}
+
+
+\begin{flushleft}
+quantum computer because it is modular. The only factor
+\end{flushleft}
+
+
+\begin{flushleft}
+that depends on whether or not it is a near-term or long-term
+\end{flushleft}
+
+
+\begin{flushleft}
+computer, is how many individual modules can be added to
+\end{flushleft}
+
+
+\begin{flushleft}
+the hardware before the quality of the qubits worsen to the
+\end{flushleft}
+
+
+\begin{flushleft}
+point where the computer cannot execute its instructions
+\end{flushleft}
+
+
+\begin{flushleft}
+correctly.
+\end{flushleft}
+
+
+\begin{flushleft}
+This paper will first cover the basics of quantum computing. It will then transition into discussing previous research
+\end{flushleft}
+
+
+\begin{flushleft}
+that was performed in this area. This will be followed by a
+\end{flushleft}
+
+
+\begin{flushleft}
+couple of paragraphs about a new type of architecture for
+\end{flushleft}
+
+
+\begin{flushleft}
+a microwave ion trapped quantum computer. After talking
+\end{flushleft}
+
+
+\begin{flushleft}
+about the benefits of the design, the last two sections will
+\end{flushleft}
+
+
+\begin{flushleft}
+contain a concluding paragraph and a discussion about some
+\end{flushleft}
+
+
+\begin{flushleft}
+potential directions for future research.
+\end{flushleft}
+
+
+
+
+
+2.
+
+
+
+
+
+\begin{flushleft}
+PRELIMINARIES
+\end{flushleft}
+
+
+
+
+
+2.1
+
+
+2.1.1
+
+
+
+
+
+\begin{flushleft}
+Quantum Mechanics
+\end{flushleft}
+
+
+\begin{flushleft}
+Two-level Quantum System
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+The fundamentals of quantum theory can be illustrated by
+\end{flushleft}
+
+
+\begin{flushleft}
+the double slit experiment [3]. This experiment is composed
+\end{flushleft}
+
+
+\begin{flushleft}
+of an electron source, a wall with two slits, and a backdrop.
+\end{flushleft}
+
+
+\begin{flushleft}
+When an electron is shot at the wall with slits, there is an
+\end{flushleft}
+
+
+\begin{flushleft}
+interference pattern on the backdrop. This result suggests
+\end{flushleft}
+
+
+\begin{flushleft}
+that electrons are waves. There is a dilemma. The electron
+\end{flushleft}
+
+
+\begin{flushleft}
+left the source as a particle, so which slit did it go through?
+\end{flushleft}
+
+
+\begin{flushleft}
+To answer this question, we place a detector in front of the
+\end{flushleft}
+
+
+\begin{flushleft}
+slits. This detector detects that the electron goes through
+\end{flushleft}
+
+
+\begin{flushleft}
+one slit or the other, not both. The electron's behavior seems
+\end{flushleft}
+
+
+\begin{flushleft}
+to depend on whether or not its state is observed. When it's
+\end{flushleft}
+
+
+\begin{flushleft}
+observed, it behaves like a particle, when not, it behaves
+\end{flushleft}
+
+
+\begin{flushleft}
+like wave. The act of measuring the electron collapses the
+\end{flushleft}
+
+
+\begin{flushleft}
+wave function. The double-slit experiment highlights the
+\end{flushleft}
+
+
+\begin{flushleft}
+wave-particle duality of light. This behavior describes all
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+\newpage
+quantum systems, such as photons and atoms. It cannot be
+\end{flushleft}
+
+
+\begin{flushleft}
+explained using classical physics.
+\end{flushleft}
+
+
+\begin{flushleft}
+The consequences of the double-slit experiment can also
+\end{flushleft}
+
+
+\begin{flushleft}
+be described as a two-level quantum system. The doubleslit experiment and the two-level quantum systems highlight
+\end{flushleft}
+
+
+\begin{flushleft}
+that quantum particles can be in a superposition of states.
+\end{flushleft}
+
+
+\begin{flushleft}
+For example, an atom is composed of two states. A ground
+\end{flushleft}
+
+
+\begin{flushleft}
+state and an excited state. When the atom is not measured, it is in a superposition of the ground state and the
+\end{flushleft}
+
+
+\begin{flushleft}
+excited state. As soon as it is measured, there is a 50 percent chance that the atom will be in a ground state and a 50
+\end{flushleft}
+
+
+\begin{flushleft}
+percent chance that it will be in an excited state. Quantum
+\end{flushleft}
+
+
+\begin{flushleft}
+mechanics can be described by probability theory.
+\end{flushleft}
+
+
+
+
+
+2.1.2
+
+
+
+
+
+\begin{flushleft}
+Quantum Entanglement
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Quantum entanglement is when quantum objects interact
+\end{flushleft}
+
+
+\begin{flushleft}
+so that the state of each object cannot be described independently of the other objects [8]. When a pair of quantum
+\end{flushleft}
+
+
+\begin{flushleft}
+particles are entangled, it is possible to know the state of
+\end{flushleft}
+
+
+\begin{flushleft}
+both particles by measuring one of them. For example, if
+\end{flushleft}
+
+
+\begin{flushleft}
+two electrons are entangled, they can be described as being
+\end{flushleft}
+
+
+\begin{flushleft}
+in the superposition of states spin up and spin down. If one
+\end{flushleft}
+
+
+\begin{flushleft}
+electron is measured, then the state of that electron is correlated with the state of the other. If the measured electron
+\end{flushleft}
+
+
+\begin{flushleft}
+is spin up, then the other one is also spin up.
+\end{flushleft}
+
+
+
+
+
+2.1.3
+
+
+
+
+
+2.2.1
+
+
+
+
+
+2.2.2
+
+
+
+
+
+\begin{flushleft}
+Quantum gates
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Like classical computing, quantum computing has finite
+\end{flushleft}
+
+
+\begin{flushleft}
+set of universal gates. A set of universal quantum gates can
+\end{flushleft}
+
+
+\begin{flushleft}
+be used to construct any arbitrary quantum algorithm. The
+\end{flushleft}
+
+
+\begin{flushleft}
+most common types of universal quantum gates are onequbit gates and two-qubit gates. One-qubit gates can be
+\end{flushleft}
+
+
+\begin{flushleft}
+represented with 2 by 2 matrices. They transform the state
+\end{flushleft}
+
+
+\begin{flushleft}
+vector of one qubit. 4 by 4 matrices are used to represent two
+\end{flushleft}
+
+
+\begin{flushleft}
+qubit gates. They are used to entangle 2 qubits with each
+\end{flushleft}
+
+
+\begin{flushleft}
+other. A set of universal quantum gates can be composed
+\end{flushleft}
+
+
+\begin{flushleft}
+of Pauli and CNOT gates. They can also be composed of
+\end{flushleft}
+
+
+\begin{flushleft}
+Hadamard, Phase shift, and CNOT gates [6].
+\end{flushleft}
+
+
+?
+
+
+\begin{flushleft}
+P auli $-$ X =
+\end{flushleft}
+
+
+
+
+
+0
+
+
+1
+
+
+
+
+
+?
+
+
+1
+
+
+0
+
+
+
+
+
+\begin{flushleft}
+P auli $-$ Y =
+\end{flushleft}
+
+
+\begin{flushleft}
+
+\end{flushleft}
+
+
+
+
+
+?
+
+
+?
+
+
+1 0
+
+
+\begin{flushleft}
+P auli $-$ Z =
+\end{flushleft}
+
+
+0 $-$1
+
+
+
+
+
+\begin{flushleft}
+Decoherence
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+A system maintains its quantum state as long as the environment does not disturb it. All quantum systems lose their
+\end{flushleft}
+
+
+\begin{flushleft}
+quantum states because they can never be perfectly isolated
+\end{flushleft}
+
+
+\begin{flushleft}
+from their environments. Decoherence is when a quantum
+\end{flushleft}
+
+
+\begin{flushleft}
+state is disrupted by the environment. When two-level quantum systems decohere, they go from being in a superposition
+\end{flushleft}
+
+
+\begin{flushleft}
+of states to one state. For example, an electron can be in
+\end{flushleft}
+
+
+\begin{flushleft}
+a superposition of spin up and spin down states for a short
+\end{flushleft}
+
+
+\begin{flushleft}
+period of time before decohering to only being in a spin up
+\end{flushleft}
+
+
+\begin{flushleft}
+or spin down state. The length of time it takes for a particle
+\end{flushleft}
+
+
+\begin{flushleft}
+to lose its superposition of states is called the decoherence
+\end{flushleft}
+
+
+\begin{flushleft}
+time.
+\end{flushleft}
+
+
+
+
+
+2.2
+
+
+
+
+
+\begin{flushleft}
+quantum system. This means that is can be represented as
+\end{flushleft}
+
+
+\begin{flushleft}
+a vector on two dimensional complex vector space, like a
+\end{flushleft}
+
+
+\begin{flushleft}
+Bloch sphere. Computations are performed by rotating the
+\end{flushleft}
+
+
+\begin{flushleft}
+state vector in the sphere before the qubit decoheres [6].
+\end{flushleft}
+
+
+
+
+
+?
+
+
+?
+
+
+1
+
+
+0
+
+
+\begin{flushleft}
+$\pi$/8 =
+\end{flushleft}
+
+
+\begin{flushleft}
+0 e$\pi$/4i
+\end{flushleft}
+
+
+
+
+
+2.2.3
+
+
+
+
+
+1
+
+
+\begin{flushleft}
+0
+\end{flushleft}
+
+
+\begin{flushleft}
+CN OT = 
+\end{flushleft}
+
+
+\begin{flushleft}
+0
+\end{flushleft}
+
+
+0
+
+
+?
+
+
+
+
+
+?
+
+
+?
+
+
+\begin{flushleft}
+0 $-$i
+\end{flushleft}
+
+
+\begin{flushleft}
+i 0
+\end{flushleft}
+
+
+0
+
+
+1
+
+
+0
+
+
+0
+
+
+
+
+
+\begin{flushleft}
+
+\end{flushleft}
+
+
+0
+
+
+\begin{flushleft}
+0
+\end{flushleft}
+
+
+\begin{flushleft}
+
+\end{flushleft}
+
+
+\begin{flushleft}
+1
+\end{flushleft}
+
+
+0
+
+
+
+
+
+0
+
+
+0
+
+
+0
+
+
+1
+
+
+
+
+
+1 1
+
+
+1 $-$1
+
+
+$\surd$
+
+
+\begin{flushleft}
+Hadamard =
+\end{flushleft}
+
+
+2
+
+
+
+
+
+?
+
+
+
+
+
+\begin{flushleft}
+Quantum Algorithms
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+A quantum algorithm is the application of successive quantum gates to qubits. It can be represented as multiplying the
+\end{flushleft}
+
+
+\begin{flushleft}
+vector that represents a gate with the vector that represents
+\end{flushleft}
+
+
+\begin{flushleft}
+a qubit. It can also be expressed as a circuit diagram.
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Quantum Computing
+\end{flushleft}
+
+
+\begin{flushleft}
+Quantum bit
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+A fundamental unit of information for classical computers
+\end{flushleft}
+
+
+\begin{flushleft}
+is the bit. The fundamental unit for quantum computers is
+\end{flushleft}
+
+
+\begin{flushleft}
+the quantum bit, or qubit. It can be represented with a
+\end{flushleft}
+
+
+\begin{flushleft}
+Bloch sphere.
+\end{flushleft}
+
+
+\begin{flushleft}
+ẑ = |0i
+\end{flushleft}
+
+
+\begin{flushleft}
+|$\psi$i
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+The above circuit diagram is the Bell state algorithm.
+\end{flushleft}
+
+
+\begin{flushleft}
+This algorithm is an illustration of quantum entanglement.
+\end{flushleft}
+
+
+\begin{flushleft}
+The Hadamard gate is applied to the first qubit, which transforms the state of the first qubit to a superposition. The
+\end{flushleft}
+
+
+\begin{flushleft}
+CNOT gate is applied from the first qubit to the second
+\end{flushleft}
+
+
+\begin{flushleft}
+one. This will perform the NOT operation on the second
+\end{flushleft}
+
+
+\begin{flushleft}
+qubit if the first one is in an excited state, and do nothing
+\end{flushleft}
+
+
+\begin{flushleft}
+if the first qubit is in a ground state [6].
+\end{flushleft}
+
+
+
+
+
+2.2.4
+
+
+\begin{flushleft}
+$\theta$
+\end{flushleft}
+
+
+\begin{flushleft}
+ŷ
+\end{flushleft}
+
+
+\begin{flushleft}
+ϕ
+\end{flushleft}
+
+
+\begin{flushleft}
+x̂
+\end{flushleft}
+
+
+
+
+
+2.2.5
+
+
+\begin{flushleft}
+$-$ẑ = |1i
+\end{flushleft}
+
+
+\begin{flushleft}
+While a bit can be represented as a vector that occupies
+\end{flushleft}
+
+
+\begin{flushleft}
+one of two states, a qubit needs to be described as a two-level
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Quantum error Correction
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Quantum error correction techniques are used when the
+\end{flushleft}
+
+
+\begin{flushleft}
+quantum algorithms need to be protected from decoherence
+\end{flushleft}
+
+
+\begin{flushleft}
+and noise; because decoherence and noise destroys the computation. Redundant qubits are used in the physical implementation of a quantum computer to preserve the state of
+\end{flushleft}
+
+
+\begin{flushleft}
+the computation for as long as possible [6].
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+DiVincenzo's criteria
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+DiVincenzo's criteria is a list of specifications created by
+\end{flushleft}
+
+
+\begin{flushleft}
+David DiVincenzo that a physical system must satisfy to be
+\end{flushleft}
+
+
+\begin{flushleft}
+considered a universal quantum computer [2].
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+\newpage
+1. System of qubits
+\end{flushleft}
+
+
+\begin{flushleft}
+2. Method of initializing the qubits to a ground state
+\end{flushleft}
+
+
+\begin{flushleft}
+3. Qubits with long decoherence times
+\end{flushleft}
+
+
+\begin{flushleft}
+4. Implementation of a universal set of quantum gates
+\end{flushleft}
+
+
+\begin{flushleft}
+5. Method of measuring state of qubits
+\end{flushleft}
+
+
+
+
+
+2.2.6
+
+
+
+
+
+\begin{flushleft}
+Computation with Ion-traps
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Ion traps can be used to meet DiVincenzo's criteria. They
+\end{flushleft}
+
+
+\begin{flushleft}
+are devices that use magnetic and electric fields to trap ions
+\end{flushleft}
+
+
+\begin{flushleft}
+[8]. Each ion that is trapped represents a qubit. These
+\end{flushleft}
+
+
+\begin{flushleft}
+qubits are initialized by cooling them to their ground states.
+\end{flushleft}
+
+
+\begin{flushleft}
+Ions are a great representation for qubits because they have
+\end{flushleft}
+
+
+\begin{flushleft}
+long decoherence times (from hundreds to thousands of microseconds) [6].
+\end{flushleft}
+
+
+\begin{flushleft}
+Universal quantum gates are usually implemented by shining a global laser on the ions for multiple qubit gates and
+\end{flushleft}
+
+
+\begin{flushleft}
+focused lasers for single qubit gates. The state of the qubit
+\end{flushleft}
+
+
+\begin{flushleft}
+is measured by shining a laser on an ion and observing if the
+\end{flushleft}
+
+
+\begin{flushleft}
+ion emits a photon. If the ion emits a photon, then the ion
+\end{flushleft}
+
+
+\begin{flushleft}
+is in an excited state. If nothing is emitted, then the ion is
+\end{flushleft}
+
+
+\begin{flushleft}
+in a ground state. The frequency for the laser that performs
+\end{flushleft}
+
+
+\begin{flushleft}
+measurements and the one that applies quantum gates is different, because ions need to maintain their quantum state
+\end{flushleft}
+
+
+\begin{flushleft}
+after the gates are applied.
+\end{flushleft}
+
+
+
+
+
+3.
+
+
+
+
+
+\begin{flushleft}
+PREVIOUS WORK
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Most computer architectures whether classical or quantum, generally follow the same design. The architecture is
+\end{flushleft}
+
+
+\begin{flushleft}
+composed of an instruction set. This instruction set describes a language for an abstract machine which could implemented in software or hardware.
+\end{flushleft}
+
+
+
+
+
+3.1
+
+
+3.1.1
+
+
+
+
+
+\begin{flushleft}
+Laser ion trapped architecture
+\end{flushleft}
+
+
+\begin{flushleft}
+Instruction Set Architecture
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Except for some minor differences, most ISAs for quantum
+\end{flushleft}
+
+
+\begin{flushleft}
+computers are the same. The high level ISA is represented
+\end{flushleft}
+
+
+\begin{flushleft}
+as the text representation of the quantum gates. An ISA for
+\end{flushleft}
+
+
+\begin{flushleft}
+a laser trapped ion computer could be the based on the Von
+\end{flushleft}
+
+
+\begin{flushleft}
+Neumann model [5].
+\end{flushleft}
+
+
+
+
+
+3.1.2
+
+
+
+
+
+\begin{flushleft}
+Physical implementation
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+This computer is composed of several ion traps that are
+\end{flushleft}
+
+
+\begin{flushleft}
+connected with wires. Computations are performed by applying lasers on the ions. The wires are used to transport
+\end{flushleft}
+
+
+\begin{flushleft}
+ions between traps.
+\end{flushleft}
+
+
+
+
+
+3.2
+
+
+
+
+
+\begin{flushleft}
+Quil
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+A hybrid quantum computer is a computer that treats a
+\end{flushleft}
+
+
+\begin{flushleft}
+quantum computer as a co-processor to a classical computer.
+\end{flushleft}
+
+
+\begin{flushleft}
+It does not give the quantum computer a job that cannot be
+\end{flushleft}
+
+
+\begin{flushleft}
+performed efficiently on the classical computer. Near-term
+\end{flushleft}
+
+
+\begin{flushleft}
+quantum computers will be hybrid. One instruction set for
+\end{flushleft}
+
+
+\begin{flushleft}
+hybrid quantum computers is Quil. This instruction language describes an abstract machine for a hybrid quantum
+\end{flushleft}
+
+
+\begin{flushleft}
+computer. It is primarily designed for near-term algorithms;
+\end{flushleft}
+
+
+\begin{flushleft}
+like the variational quantum eigensolver and material simulations [7].
+\end{flushleft}
+
+
+
+
+
+3.3
+
+
+
+
+
+\begin{flushleft}
+Microwave ion trap quantum computer
+\end{flushleft}
+
+
+
+
+
+3.3.1
+
+
+
+
+
+\begin{flushleft}
+Physical implementation
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+The trapped ion microwave quantum computer is made
+\end{flushleft}
+
+
+\begin{flushleft}
+out of individual modules. Each module is a universal quantum computer. It contains a loading zone, gate zone and
+\end{flushleft}
+
+
+\begin{flushleft}
+readout zone. The loading zone is where ions are initialized. Quantum gates are applied to the ions in the gate
+\end{flushleft}
+
+
+\begin{flushleft}
+zone. Instead of using lasers to perform the gates like the
+\end{flushleft}
+
+
+\begin{flushleft}
+laser trapped ion computer, this computer performs gates
+\end{flushleft}
+
+
+\begin{flushleft}
+using microwave radiation. The readout zone is where a
+\end{flushleft}
+
+
+\begin{flushleft}
+measurement laser is applied to the ion to read the result of
+\end{flushleft}
+
+
+\begin{flushleft}
+the computation. Individual modules are attached to each
+\end{flushleft}
+
+
+\begin{flushleft}
+other to create a large scale quantum computer [5].
+\end{flushleft}
+
+
+
+
+
+3.3.2
+
+
+
+
+
+\begin{flushleft}
+Error correction
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+The trapped ion computer uses surface codes to perform
+\end{flushleft}
+
+
+\begin{flushleft}
+error correction [5]. The physical qubits are separated into
+\end{flushleft}
+
+
+\begin{flushleft}
+data qubits, measure-x and measure-z qubits. The measurez qubit applies 4 CNOT gates on the data qubit. The
+\end{flushleft}
+
+
+\begin{flushleft}
+measure-x performs the Hadamard gate before and after the
+\end{flushleft}
+
+
+\begin{flushleft}
+4 CNOT gates have been applied. It is designed so that if
+\end{flushleft}
+
+
+\begin{flushleft}
+there is an error in a data bit, it flips the neighboring operators that will detect the error. The data for these errors will
+\end{flushleft}
+
+
+\begin{flushleft}
+be transferred to a classical computer, where a classical program will correct the results of the quantum computation
+\end{flushleft}
+
+
+\begin{flushleft}
+based on the error information.
+\end{flushleft}
+
+
+
+
+
+4.
+
+
+4.1
+
+
+
+
+
+\begin{flushleft}
+NEW ARCHITECTURE
+\end{flushleft}
+
+
+\begin{flushleft}
+Quil compiler
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+I propose a new architecture that will implement the Quil
+\end{flushleft}
+
+
+\begin{flushleft}
+ISA on the microwave ion trapped quantum computer. A
+\end{flushleft}
+
+
+\begin{flushleft}
+lot of architectures have been proposed for ion trap quantum computers. This design borrows ideas from Balensiefer,
+\end{flushleft}
+
+
+\begin{flushleft}
+Kregor-Stickles, and Oskin's infrastructure; which is composed of a source compiler, an error correction compiler,
+\end{flushleft}
+
+
+\begin{flushleft}
+a device scheduler, and a simulator [1]. The source compiler will generate Quil code. Since Quil code is a low-level
+\end{flushleft}
+
+
+\begin{flushleft}
+intermediate representation of quantum programs [7], The
+\end{flushleft}
+
+
+\begin{flushleft}
+Quil compiler will be a back-end compiler. It will contain
+\end{flushleft}
+
+
+\begin{flushleft}
+3 phases. Program analysis, optimization, and code generation. The code generator will output an architecturedependent ISA. This architecture-dependent ISA will have
+\end{flushleft}
+
+
+\begin{flushleft}
+a one-to-one correspondence with the machine code that will
+\end{flushleft}
+
+
+\begin{flushleft}
+be executed on the computer.
+\end{flushleft}
+
+
+
+
+
+4.2
+
+
+
+
+
+\begin{flushleft}
+Error correcting compiler
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Error correction will not be needed for near-term quantum devices. When quantum computers are composed of
+\end{flushleft}
+
+
+\begin{flushleft}
+enough qubits, we will be capable of programming them
+\end{flushleft}
+
+
+\begin{flushleft}
+to perform error corrected computations. This is why the
+\end{flushleft}
+
+
+\begin{flushleft}
+error correcting compiler is optional. Unlike the Quil compiler, the computer programmer can choose to incorporate
+\end{flushleft}
+
+
+\begin{flushleft}
+the error correction compiler into his/her architecture. The
+\end{flushleft}
+
+
+\begin{flushleft}
+error correcting compiler will be a source to source compiler. It will compile Quil code to error corrected Quil code.
+\end{flushleft}
+
+
+\begin{flushleft}
+If the computer architect wishes to incorporate the error correction compiler into his/her architecture, it will be placed
+\end{flushleft}
+
+
+\begin{flushleft}
+before the Quil compiler. Its input will be the Quil code
+\end{flushleft}
+
+
+\begin{flushleft}
+that that was written by the programmer or code generated
+\end{flushleft}
+
+
+\begin{flushleft}
+by a higher level compiler, and it's output will be the error corrected version of that program. The error corrected
+\end{flushleft}
+
+
+\begin{flushleft}
+code will be valid Quil code. This error corrected program
+\end{flushleft}
+
+
+\begin{flushleft}
+will be the input to the Quil compiler, which will generate
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+\newpage
+the architecture-dependent ISA. The error correction compiler will implement the surface code error correction scheme
+\end{flushleft}
+
+
+\begin{flushleft}
+that was covered in section 3.3.2.
+\end{flushleft}
+
+
+
+
+
+5.
+
+
+
+
+
+\begin{flushleft}
+BENEFITS OF THE NEW DESIGN
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+Quil is a low-level intermediate representation. This means
+\end{flushleft}
+
+
+\begin{flushleft}
+that it can be treated like the LLVM Intermediate representation to build reusable compilers [4]. Compiler writers who
+\end{flushleft}
+
+
+\begin{flushleft}
+choose Quil as a target language do not have to write a backend for their compiler. Using Quil as the implementatationindependant ISA for the microwave computer takes advantage of this reusability.
+\end{flushleft}
+
+
+\begin{flushleft}
+The modularity of the architecture means that other architecture designers can take the parts they like about this
+\end{flushleft}
+
+
+\begin{flushleft}
+implementation and leave parts they would like to implement on their own. If they like the error correction compiler,
+\end{flushleft}
+
+
+\begin{flushleft}
+but their implementation targets a different back-end like a
+\end{flushleft}
+
+
+\begin{flushleft}
+superconducting quantum computer, they can take the error correction compiler and implement everything else. They
+\end{flushleft}
+
+
+\begin{flushleft}
+could also decide to add their backend to the Quil compiler.
+\end{flushleft}
+
+
+
+
+
+6.
+
+
+
+
+
+\begin{flushleft}
+CONCLUSION
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+I have proposed a scalable software architecture for a scalable quantum computer. After reviewing the available tools,
+\end{flushleft}
+
+
+\begin{flushleft}
+I have found that they were not sufficient for near-term and
+\end{flushleft}
+
+
+\begin{flushleft}
+long-term ion trap quantum computers. The Quil ISA is
+\end{flushleft}
+
+
+\begin{flushleft}
+designed for near-term quantum computers because it compiles straight to the implementation of an abstract machine
+\end{flushleft}
+
+
+\begin{flushleft}
+without first going through an error correction compiler. If
+\end{flushleft}
+
+
+\begin{flushleft}
+the Quil ISA is compiled to an error correcting ISA, it can
+\end{flushleft}
+
+
+\begin{flushleft}
+be suitable for long-term quantum computers. The ideas
+\end{flushleft}
+
+
+\begin{flushleft}
+presented are mainly theoretical, but there is a plan to test
+\end{flushleft}
+
+
+\begin{flushleft}
+them in future research.
+\end{flushleft}
+
+
+
+
+
+7.
+
+
+
+
+
+\begin{flushleft}
+effects. It will also test the viability of the microwave quantum computer by testing how well the computer modules
+\end{flushleft}
+
+
+\begin{flushleft}
+scale with respect to the number of qubits. This simulator
+\end{flushleft}
+
+
+\begin{flushleft}
+might follow design of the Monte-Carlo simulator [1].
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+FUTURE WORK
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+The ideas presented in this paper are not complete; specifically, how the Quil and error correction compilers will be
+\end{flushleft}
+
+
+\begin{flushleft}
+implemented. This paper does not go into the detail about
+\end{flushleft}
+
+
+\begin{flushleft}
+the algorithms and data structures these compilers will use.
+\end{flushleft}
+
+
+\begin{flushleft}
+It also doesn't talk about the design of the architecturedependent ISA. Specifications of the compilers and the architecture dependent ISA might be presented in future papers.
+\end{flushleft}
+
+
+\begin{flushleft}
+The difference between a virtual machine and a simulator is that a virtual machine is an implementation of an
+\end{flushleft}
+
+
+\begin{flushleft}
+abstract machine, while a simulator is a software implementation of a specific hardware. An open source simulator for
+\end{flushleft}
+
+
+\begin{flushleft}
+near-term hybrid quantum computers does not exist. Most
+\end{flushleft}
+
+
+\begin{flushleft}
+of the open source simulators are not practical for running
+\end{flushleft}
+
+
+\begin{flushleft}
+near-tem quantum algorithms like the variational quantum
+\end{flushleft}
+
+
+\begin{flushleft}
+eigensolver. If not incomplete, they are usually for pedagogical or research purposes. A possible direction for the future
+\end{flushleft}
+
+
+\begin{flushleft}
+would be implementing an open source virtual machine for
+\end{flushleft}
+
+
+\begin{flushleft}
+near-term devices, and a wide range of programming tools
+\end{flushleft}
+
+
+\begin{flushleft}
+on top of this virtual machine.
+\end{flushleft}
+
+
+\begin{flushleft}
+Another possible direction is the implementation of an
+\end{flushleft}
+
+
+\begin{flushleft}
+open source simulator of the microwave trapped ion quantum computer. This is because there is no way to know how
+\end{flushleft}
+
+
+\begin{flushleft}
+the sound the ideas presented in this paper are until they
+\end{flushleft}
+
+
+\begin{flushleft}
+are implemented in software. This simulator will be used
+\end{flushleft}
+
+
+\begin{flushleft}
+for testing purposes, like how decoherence affects the computation, and how error correcting algorithms mitigate these
+\end{flushleft}
+
+
+
+
+
+8.
+
+
+
+
+
+\begin{flushleft}
+ACKNOWLEDGMENTS
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+I would like to thank Joseph Zambreno for providing valuable feedback on how to study this subject. I would also like
+\end{flushleft}
+
+
+\begin{flushleft}
+to thank Lucas Skoff, whose friendship kept me sane while
+\end{flushleft}
+
+
+\begin{flushleft}
+I was performing this research.
+\end{flushleft}
+
+
+
+
+
+9.
+
+
+
+
+
+\begin{flushleft}
+REFERENCES
+\end{flushleft}
+
+
+
+
+
+\begin{flushleft}
+[1] S. Balensiefer, L. Kregor-Stickles, and M. Oskin. An
+\end{flushleft}
+
+
+\begin{flushleft}
+evaluation framework and instruction set architecture
+\end{flushleft}
+
+
+\begin{flushleft}
+for ion-trap based quantum micro-architectures. In
+\end{flushleft}
+
+
+\begin{flushleft}
+Proceedings of the 32nd annual international
+\end{flushleft}
+
+
+\begin{flushleft}
+symposium on Computer Architecture, pages 186--196,
+\end{flushleft}
+
+
+\begin{flushleft}
+New York, NY, USA, 2005. ACM.
+\end{flushleft}
+
+
+\begin{flushleft}
+[2] D. P. DiVincenzo. The physical implementation of
+\end{flushleft}
+
+
+\begin{flushleft}
+quantum computation. Fortschritte der Physik,
+\end{flushleft}
+
+
+48(9-11):771--783, 2000.
+
+
+\begin{flushleft}
+[3] R. Feynman, S. Sands, Matthew, and R. Leighton. The
+\end{flushleft}
+
+
+\begin{flushleft}
+Feynman Lectures on Physics Volume 3: QUantum
+\end{flushleft}
+
+
+\begin{flushleft}
+Mechanics. Basic Books, 250 West 57th Street, 15th
+\end{flushleft}
+
+
+\begin{flushleft}
+Floor, New York, NY,10107, USA, 1965.
+\end{flushleft}
+
+
+\begin{flushleft}
+[4] C. Lattner and V. Adve. LLVM: A Compilation
+\end{flushleft}
+
+
+\begin{flushleft}
+Framework for Lifelong Program Analysis \&
+\end{flushleft}
+
+
+\begin{flushleft}
+Transformation. In Proceedings of the 2004
+\end{flushleft}
+
+
+\begin{flushleft}
+International Symposium on Code Generation and
+\end{flushleft}
+
+
+\begin{flushleft}
+Optimization (CGO'04), Palo Alto, California, Mar
+\end{flushleft}
+
+
+2004.
+
+
+\begin{flushleft}
+[5] B. Lekitsch, S. Weidt, A. G. Fowler, K. M{\o}lmer,
+\end{flushleft}
+
+
+\begin{flushleft}
+S. J. Devitt, C. Wunderlich, and W. K. Hensinger.
+\end{flushleft}
+
+
+\begin{flushleft}
+Blueprint for a microwave trapped ion quantum
+\end{flushleft}
+
+
+\begin{flushleft}
+computer. Science Advances, 3, July 2017.
+\end{flushleft}
+
+
+\begin{flushleft}
+[6] M. Nielsen and I. Chuang. Quantum Computation and
+\end{flushleft}
+
+
+\begin{flushleft}
+Quantum Information. Cambridge University Press,
+\end{flushleft}
+
+
+\begin{flushleft}
+New York, NY, USA, 2010.
+\end{flushleft}
+
+
+\begin{flushleft}
+[7] R. S. Smith, M. J. Curtis, and W. J. Zeng. A practical
+\end{flushleft}
+
+
+\begin{flushleft}
+quantum instruction set architecture, 2016.
+\end{flushleft}
+
+
+\begin{flushleft}
+[8] P. Wieburg. A Linear Paul Trap for Ytterbium Ions.
+\end{flushleft}
+
+
+\begin{flushleft}
+Master's thesis, Universität Hamburg, 20146 Hamburg,
+\end{flushleft}
+
+
+\begin{flushleft}
+Germany, 2014.
+\end{flushleft}
+
+
+
+
+
+\newpage
+
+
+
+\end{document}
