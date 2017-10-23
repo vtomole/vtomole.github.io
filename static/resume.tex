@@ -1,0 +1,186 @@
+%-------------------------
+% Resume in Latex
+% Author : Victory Omole
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+ \textbf {Victory Omole} & Email : vtomole@iastate.edu\\
+  https://github.com/vtomole & Phone : 515-259-7269 \\
+\end{tabular*}
+\section{Objective}
+Seeking an intership, co-op or full-time position that will allow me to take full advantage of my passion
+and experience in Software Engineering.
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Iowa State University}{Ames, IA}
+      {Bachelor of Science, Computer Engineering ;  GPA: 3.02/4.00}{Expected graduation: May 2018}
+  \resumeSubHeadingListEnd
+  \section{Honor}
+  Iowa State Dean’s List, Spring 2017.
+  %-----------PROJECTS-----------------
+\section{Projects}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {C48}{}
+      {A Modern Scalable Programming Language}{September 2017 - Present}
+      \resumeItemListStart
+        \resumeItem{Parser}
+          {Implemented a parser that can parse arithmetic expressions and build an abstract syntax tree out of these expressions.}
+        \resumeItem{Intepreter}
+          {Implemented an intepreter that can walk the absract syntax tree and apply function operators to it's arguments.}
+          \resumeItemListEnd
+
+           \resumeSubheading
+      {Aubree}{}
+      {A Quantum Computing Playground}{May 2017 - Present}
+      \resumeItemListStart
+        \resumeItem{Web stack}
+          {Wrote a Web page and forum for Quantum Computing enthusiasts.}
+        \resumeItem{Simulators}
+          {Implemented a Topological quantum computer simulator and Quantum gate array simulator.}
+          \resumeItemListEnd
+           \resumeSubheading
+      {Evie}{}
+      {A Programming Language Playground}{September 2016 - Present}
+      \resumeItemListStart
+        \resumeItem{Cantor}
+          {Wrote a programming language inspired by Set Theory that won a prize for ``Most interesting project'' in a Fall 2016 Hackathon.}
+        \resumeItem{Shell}
+                   {Implemented a Shell intepreter that is capable of executing Linux shell commands.}
+
+                    \resumeItem{Kiana}
+                               {Wrote a virtual machine that is capable of interpreting an assembly language.}
+                             
+          \resumeItemListEnd
+
+
+           \resumeSubheading
+           {Victorys AI Playground}{}
+      {Documenting my education on Machine Learning}{May 2016 - August 2016}
+      \resumeItemListStart
+        \resumeItem{AIPlayground}
+          {Programmed basic neural networks in Jupyter Notebook, then trained these neural networks on a GPU.}
+        \resumeItem{Blog}
+          {Implemented in Django and deployed using Heroku: https://victorysaiplayground.herokuapp.com/ }
+      \resumeItemListEnd
+
+   
+
+  \resumeSubHeadingListEnd
+
+%
+%--------PROGRAMMING SKILLS------------
+\section{Programming Skills}
+\textbf{Skilled}: Java, C,  Quantum Computing, Common Lisp, Scheme
+
+\textbf{Experienced}: Python, Linux, Git, BASH, Emacs, HTML
+
+\textbf{Basic competancy}: Javascript, PHP, C++, Ruby
+
+
+%-------------------------------------------
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Iowa State Academic Success Center}{Ames, IA}
+      {Tutor}{September 2017 - Present}
+      \resumeItemListStart
+        \resumeItem{Tasks}
+          {I help students understand the material that is taught in the ``Theoretical Foundations in Computer Engineering'' class. I am also tutoring a ``MultiVariable Calculus'' class. }
+      \resumeItemListEnd
+
+    %\resumeSubheading
+     % {Home Depot}{Plymouth, MN}
+      %{Freight Team}{Summer of 2015 and 2016}
+      %\resumeItemListStart
+       %\resumeItem{Tasks}{Stocked shelves and hepled customers find items.}
+              
+     % \resumeItemListEnd
+
+   
+
+  \resumeSubHeadingListEnd
+
+  \section{Writing}
+  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{Architecture for a trapped ion quantum computer} & https://vtomole.github.io/static/microwave-arch.pdf\\
+\end{tabular*}
+  
+  
+\end{document}
