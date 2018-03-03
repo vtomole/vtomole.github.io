@@ -25,6 +25,7 @@ Two-State Quantum System: A two state quantum system is called a qubit. You cann
 
 You can find all of the code and the documentation on my github [repo]
 
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
 
 [here]:https://people.eecs.berkeley.edu/~christos/classics/Feynman.pdf
