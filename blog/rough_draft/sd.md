@@ -1,3 +1,4 @@
+layout: default
 $$
     \begin{matrix}
     1 & x & x^2 \\
