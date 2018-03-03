@@ -1,1 +1,1 @@
-$\bra{\Psi}\ket{\Psi}$ $\expval{A}{\Psi}$
+$\begin{bmatrix}a & b\\c & d\end{bmatrix}$
