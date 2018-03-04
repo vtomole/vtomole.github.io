@@ -114,7 +114,7 @@ When this state is measured, there is a ${|\frac{1}{\sqrt{2}}|}^2 = 0.5$ chance 
 
   <section>
   <h2>Quantum Entanglement</h2>
-  The Controlled-NOT operator is applied to entangled systems. It flips the state of the second qubit if the state of the first qubit is 1 and leaves the second qubit unchanged if the first qubit is 0.
+  <p>The Controlled-NOT operator is applied to entangled systems. It flips the state of the second qubit if the state of the first qubit is 1 and leaves the second qubit unchanged if the first qubit is 0.
 
   \begin{align}
 CNOT &= \begin{bmatrix}
@@ -178,7 +178,7 @@ CNOT\ket{10} =  \begin{bmatrix}
   1\\
   \end{bmatrix} = \ket{11}
 
-  \end{align}
+  \end{align}</p>
   
   </section>
 
@@ -186,7 +186,7 @@ CNOT\ket{10} =  \begin{bmatrix}
 
    <section>
   <h2>Superdense coding</h2>
-  <p>Two bits of information can be encoded into one qubit. Superdense coding is performed by entangling two qubits and encoding two bits by applying an operator on one qubit. Entangled qubits are sent to the receiver who uses a decoder to read the bits that were encoded.</p>
+  <p>Two bits of information can be encoded into one qubit. Superdense coding is performed by entangling two qubits and encoding two bits by applying an operator on one qubit. Entangled qubits are sent to the receiver who uses a decoder to read the bits that were encoded.
 
   Suppose the sender wants to send bits <i>01</i>. He will transform the first qubit into a superposition of states.
 
@@ -223,7 +223,7 @@ CNOT\ket{10} =  \begin{bmatrix}
   \end{align}
   
 The X operator is removed to encode <i>00</i>. The Z operator is applied in place of X to encode <i>10</i>. <i>11</i>
- is encoded with Z and X.
+ is encoded with Z and X.</p>
 
  
 
@@ -234,7 +234,7 @@ The X operator is removed to encode <i>00</i>. The Z operator is applied in plac
    <section>
      <h2>Simulation of superdense coding</h2>
 
-     It's not difficult to write a program simulates superdense coding. A program that consists of instructions we can run on a quantum computer is composed of commands where each line contains an operator and a qubit it's applied to. "H 1" means "Apply the Hadamard operator to qubit 1". A program that encodes and decodes bits <i>01</i> could be 
+    <p>It's not difficult to write a program simulates superdense coding. A program that consists of instructions we can run on a quantum computer is composed of commands where each line contains an operator and a qubit it's applied to. "H 1" means "Apply the Hadamard operator to qubit 1". A program that encodes and decodes bits <i>01</i> could be 
 
      <pre>
   <code>
@@ -261,7 +261,7 @@ The X operator is removed to encode <i>00</i>. The Z operator is applied in plac
     MEASUREMENT of qubit 1 is 1 
 
   </code>
-				    </pre>
+				    </pre></p>
 
 				    
 				    
@@ -270,7 +270,7 @@ The X operator is removed to encode <i>00</i>. The Z operator is applied in plac
 
    <section>
 <h2>Conclusion</h2>
-Superdense coding is a glimpse into the possibilities of quantum information. The principle of superposition and entanglement is used to encode two bits of information in one qubit. This technique can be executed on a quantum computer or a QVM.
+<p>Superdense coding is a glimpse into the possibilities of quantum information. The principle of superposition and entanglement is used to encode two bits of information in one qubit. This technique can be executed on a quantum computer or a QVM.</p>
 <section/>
 
  <section>
