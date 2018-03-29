@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Quantum programming at HackISU"
+title: "Quantum programming at Hack ISU"
 date: 2018-03-29
 ---
 
