@@ -10,7 +10,7 @@ Qchackers built an [SDK for quantum computers] at Hack ISU last weekend. Evan An
 
 **Compiler and QVM**
 
-The compiler was written in Common Lisp.  I tried to write the compiler in Python, but Python did not have all the features I needed; like generating and executing code on the fly. Even though Common Lisp made it harder to deploy our SDK on the cloud, it was a good trade off because a Common Lisp implementation of the compiler is easier to extend than a Python implementation.
+The compiler was written in Common Lisp.  I tried to write the compiler in Python, but Python did not have all the features I needed; like generating and executing code on the fly. Even though Common Lisp made deploying our SDK to the cloud difficult, it was a good trade off because a Common Lisp implementation of the compiler is easier to extend than a Python implementation.
 
 The QVM was implemented in Python with Numpy. Implementing the virtual machine was straightforward. The most difficult part was debugging. Our virtual machine executes basic single and two qubit gates.  It also performs measurements on the qubits. Measurement results can be stored in a classical register via a classical instruction.
 
