@@ -24,5 +24,5 @@ Hack ISU Spring 2018 was my most productive hackathon. I was lucky to work with 
 
 
 [SDK for quantum computers]: http://qchackers.com
-[AWS_edu prize]: https://twitter.com/MLHacks/status/977959734467858433	
+[AWS Education prize]: https://twitter.com/MLHacks/status/977959734467858433	
 
