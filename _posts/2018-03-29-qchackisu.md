@@ -6,7 +6,7 @@ date: 2018-03-29
 
 **Introduction**
 
-Qchackers built an [SDK for quantum computers] at Hack ISU last weekend. Evan Anderson,  Dylan Sharp and I created a compiler and quantum virtual machine (QVM); which we used to demonstrated quantum teleportation between two QVMs.  This project was good enough to get us the [AWS_edu prize]. 
+Qchackers built an [SDK for quantum computers] at Hack ISU last weekend. Evan Anderson,  Dylan Sharp and I created a compiler and quantum virtual machine (QVM); which we used to demonstrated quantum teleportation between two QVMs.  This project was good enough to get us the [AWS Education prize]. 
 
 **Compiler and QVM**
 
