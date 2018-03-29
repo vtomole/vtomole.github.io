@@ -75,7 +75,8 @@ Operator application is realized by computing the dot product of the operator an
 \begin{align}
   \begin{bmatrix}
     0 & 1 \\
-    1 & 0 \\ \end{bmatrix} . \begin{bmatrix}
+  1 & 0 \\
+  \end{bmatrix} . \begin{bmatrix}
     1  \\
     0  \\
 \end{bmatrix}
@@ -94,13 +95,14 @@ Operator application is realized by computing the dot product of the operator an
 \end{align}
     puts an electron in an equal superposition of spin up and spin down.
     \begin{align}
-\begin{bmatrix}
-    1  \\
-    0  \\
-\end{bmatrix} .  \frac{1}{\sqrt{2}} \begin{bmatrix}
+  \frac{1}{\sqrt{2}} \begin{bmatrix}
     1 & 1 \\
     1 & -1 \\
-\end{bmatrix}
+  \end{bmatrix} .
+  \begin{bmatrix}
+    1  \\
+    0  \\
+\end{bmatrix} 
 = \begin{bmatrix}
     \frac{1}{\sqrt{2}}  \\
     \frac{1}{\sqrt{2}} \\

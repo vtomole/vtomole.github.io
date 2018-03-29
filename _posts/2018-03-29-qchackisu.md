@@ -6,7 +6,7 @@ date: 2018-03-29
 
 **Introduction**
 
-Qchackers built an [SDK for quantum computers] at Hack ISU last weekend. Evan Anderson,  Dylan Sharp and I created a compiler and quantum virtual machine (QVM); which we used to demonstrated quantum teleportation between two QVMs.  This project was good enough to get us the [AWS Education prize]. 
+Qchackers built an [SDK for quantum computers] at Hack ISU last weekend. Evan Anderson,  Dylan Sharp and I created a compiler and quantum virtual machine (QVM); which were used to demonstrated quantum teleportation between two QVMs.  We received the [AWS Education prize]. 
 
 **Compiler and QVM**
 
@@ -16,11 +16,11 @@ The QVM was implemented in Python with Numpy. Implementing the virtual machine w
 
 **Quantum teleportation**
 
-Hack ISU was the first time Dylan studied quantum computation. His task was to grok quantum teleportation and figure out how to implement it across two QVMs. Dylan went through all the highs and lows of studying quantum computation in 24 hours. He went from reviewing linear algebra to understanding quantum teleportation in a day. Dylan corresponded with Evan in implementing quantum teleportation on the QVMs.
+Hack ISU was the first time Dylan studied quantum computation. His task was to grok quantum teleportation and figure out how to implement it across two QVMs. Dylan went through all the highs and lows of studying quantum computation in a relatively short period of time. He went from reviewing linear algebra to understanding quantum teleportation in 24 hours. Dylan corresponded with Evan in implementing quantum teleportation on the QVMs.
 
 **Conclusion**
 
-Hack ISU Spring 2018 was my most productive hackathon. I was lucky to work with someone who knew quantum computing, and another who was eager learn. Without Dylan’s newfound knowledge of quantum teleportation and Evan’s expertise in Python programming and web development, we wouldn’t have accomplished as much as we did. I would definitely hack with this group of Qchackers again!
+Hack ISU Spring 2018 was my most productive hackathons. I was lucky to work with someone who knew quantum computing, and another who was eager learn. Without Dylan’s newfound knowledge of quantum teleportation and Evan’s expertise in Python programming and web development, we wouldn’t have accomplished as much as we did. I would definitely hack with this group of Qchackers again!
 
 
 [SDK for quantum computers]: http://qchackers.com
