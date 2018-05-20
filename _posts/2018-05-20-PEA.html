@@ -9,14 +9,10 @@ date: 2018-05-20
 <section/>
 
   <section>
-$\newcommand\ket[1]{{|{#1}\rangle}}$
-$\newcommand\bra[1]{{\langle{#1}|}}$
+    $\newcommand{\ket}[1]{\left|{#1}\right\rangle}$
     
     <h2>Quantum Phase estimation</h2>
-<p>Given a Unitary $\textit{U}$ and an eigenvector of  $\textit{U}$ $\ket{\psi}$ such that $U\ket{\psi}$ = $e^{2 \pi i  \theta}$ where $0 \leq \theta < 1$, find the eigenvalue $e^{2 \pi i  \theta}$ of $\ket{\psi}$ or the phase $\theta$ </p>
-
-
-<p> This algorithm uses 2 registers. The first register contains $m$ qubits, The more $m$ qubits, the more accurate $\theta$'s estimation will be.  The second register contains $\ket{\psi}$. Quantum Phase estimation first prepares the state $\ket{0}_{m} \ket{\psi}$ by intilizing the first $m$ qubits to $\ket{0}$ and encoding $\ket{\psi}$ in the second register. Hadamard gates are applied to each qubit in the first register</p>
+<p>The pure state of a two-level quantum system (qubit) is represented by a $2\times1$ matrix </p>
 
   </section>
 
