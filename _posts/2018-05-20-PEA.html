@@ -3,13 +3,14 @@ layout: post
 title: "Quantum Phase Estimation Algorithm and Hadamard test"
 date: 2018-05-20
 ---
+$\newcommand\ket[1]{{|{#1}\rangle}}$
+$\newcommand\bra[1]{{\langle{#1}|}}$
   <section>
 <h1>Introduction</h1>
-<p>Quantum entanglement is a powerful physical phenomenon where quantum systems interact in a way that they can't be described independently of each other. This anomaly is useful for sending classical information. Superdense coding is a procedure where quantum superposition and entanglement is used to encode two bits of information in one quantum bit. This blog post covers the basics of quantum systems and the mathematical methods used to describe and manipulate them. This post also shows how superdense coding is used to encode and decode bits 01, followed by the execution of a superdense code on a Quantum Virtual Machine (QVM).</p> 
+<p>Quantum Phase estimation is an important subroutine for quantum computing. It’s used for factoring, quantum simulation, and discrete logarithm . A version of Phase estimation called the Hadamard test is used to approximate the Jones polynomial (a significant expression in <a href = "https://en.wikipedia.org/wiki/Knot_theory">Knot theory</a>). Quantum computers can estimate phases more efficiently than classical computers because quantum computers can exploit the Quantum Fourier transform; which takes $O(n^2)$ gates on quantum computers instead of $O(n*2^n)$ gates on classical computers. This post will cover Phase Estimation and Hadamard test including their implementations on a quantum computer.</p> 
 <section/>
 
   <section>
-    $\newcommand{\ket}[1]{\left|{#1}\right\rangle}$
     
     <h2>Simple Quantum Systems</h2>
 <p>The pure state of a two-level quantum system (qubit) is represented by a $2\times1$ matrix
