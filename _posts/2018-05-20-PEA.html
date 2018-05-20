@@ -14,51 +14,51 @@ date: 2018-05-20
 <h2>Quantum Phase estimation:</h2>
 
 \[\newcommand\bra[1]{\langle{#1}|} \newcommand{\ket}[1]{\left|{#1}\right\rangle}\]
-<p>Given a Unitary $\textit{U}$ and an eigenvector of  $\textit{U}$ $\ket{\psi}$ such that $U\ket{\psi}$ = $e^{2 \pi i  \theta}$ where $0 \leq \theta < 1$, find the eigenvalue $e^{2 \pi i  \theta}$ of $\ket{\psi}$ or the phase $\theta$ </p>
+<p>Quantum Phase estimation solves: Given a Unitary $\textit{U}$ and an eigenvector of  $\textit{U}$ $\ket{\psi}$ such that $U\ket{\psi}$ = $e^{2 \pi i  \theta}$ where $0 \leq \theta < 1$, find the eigenvalue $e^{2 \pi i  \theta}$ of $\ket{\psi}$ or the phase $\theta$. </p>
 
 
-<p> This algorithm uses 2 registers. The first register contains $m$ qubits, The more $m$ qubits, the more accurate $\theta$'s estimation will be.  The second register contains $\ket{\psi}$. Quantum Phase estimation first prepares the state $\ket{0}_{m} \ket{\psi}$ by intilizing the first $m$ qubits to $\ket{0}$ and encoding $\ket{\psi}$ in the second register. Hadamard gates are applied to each qubit in the first register</p>
+<p> This algorithm uses 2 registers. The first register contains $m$ qubits. The more $m$ qubits, the more accurate $\theta$'s estimation will be.  The second register contains $\ket{\psi}$. Quantum Phase estimation first prepares the state $\ket{0}_{m} \ket{\psi}$ by intilizing the first $m$ qubits to $\ket{0}$ and encoding $\ket{\psi}$ in the second register. Hadamard gates are applied to each qubit in the first register</p>
 															 
 															   \[ \ket{\varphi_{0}} = H^{\otimes m} [\ket{0}] \ket{\psi} =  \frac{1}{\sqrt{2^m}}[(\ket{0} + \ket{1})_{0} \, (\ket{0} + \ket{1})_{1} \, (\ket{0} + \ket{1})_{2}\, ... (\ket{0} + \ket{1})_{2^m-1}] \ket{\psi} \]
 
-																		$2^{m-1}$ controlled-U (cU) gates are applied to the second register, remember that $U \ket{\psi}$ = $e^{2 \pi i  \theta}$
+																		<p>$2^{m-1}$ controlled-U (cU) gates are applied to the second register, remember that $U \ket{\psi}$ = $e^{2 \pi i  \theta}$</p>
 
 
 															   \[ \ket{\varphi_{1}} = cU^{2m-1}  \ket{\varphi_{0}} =  \frac{1}{\sqrt{2^m}}[(\ket{0} + e^{2 \pi i  \theta 2^{0}} \ket{1})_{0} \, (\ket{0} + e^{2 \pi i  \theta} 2^{1} \ket{1})_{1} \, (\ket{0} + e^{2 \pi i  \theta} 2^{2} \ket{1})_{2}\, ... (\ket{0} + e^{2 \pi i  \theta 2^{m-1}}  \ket{1})_{2^m-1}] \ket{\psi} \]
 
-															   This equation can be written as 
+															   <p>This equation can be written as</p> 
 															   \[ \ket{\varphi_{1}} = \frac{1}{\sqrt{2^m}} [ \sum_{k=0}^{ 2^{m-1}}  e^{2 \pi i  \theta k} \ket{k}] \ket{\psi}   \]
 
-Equation for computing the Quantum Fourier transform 															   
+<p>Equation for computing the Quantum Fourier transform</p> 															   
 \[\text{QFT} \ket{x} = \frac{1}{\sqrt{2^m}} \sum_{k=0}^{ 2^{m-1}}  e^{\frac{2 \pi i x k}{2^n}}  \ket{k}  \]
 
-															   The first register of $\ket{\varphi_{1}}$ is similar to QFT $\ket{x}$. This is not a coincidence. The first register is QFT $\ket{\theta}$. To get $\ket{\theta}$, the inverse of the Quantum Fourier transform (QFT in reverse) is applied to the first register. 
+															   <p>The first register of $\ket{\varphi_{1}}$ is similar to QFT $\ket{x}$. This is not a coincidence. The first register is QFT $\ket{\theta}$. To get $\ket{\theta}$, the inverse of the Quantum Fourier transform (QFT in reverse) is applied to the first register.</p> 
 
 														\begin{align}\text{QFT}^{-1} \text{QFT} \ket{\theta} = \text{QFT}^{-1} \frac{1}{\sqrt{2^m}} \sum_{k=0}^{ 2^{m-1}}  e^{2 \pi i  \theta k} \ket{k} = \ket{\theta_{0} \, \theta_{1} \,  \theta_{2} ... \, \theta_{m}  }    \end{align}
 
-																		The state of the second register doesn't change during the computation, so the final state of the system before measurement is $\ket{\theta_{0} \, \theta_{1} \,  \theta_{2} ... \, \theta_{m}   }	\ket{\psi} $. Measurement of the first register will result in an approximation of $\theta$.
+																		<p>The state of the second register doesn't change during computation, so the final state of the system before measurement is $\ket{\theta_{0} \, \theta_{1} \,  \theta_{2} ... \, \theta_{m}   }	\ket{\psi} $. Measurement of the first register will result in an approximation of $\theta$.</p>
 
 																		<h3>Quantum Phase estimation example</h3>
 																		<p>Given a unitary 
 $U = \begin{bmatrix}
     0 & 1 \\
     1 & 0 \\
-																		  \end{bmatrix} $, and an eigenvector of $U$ (1, 1), with an eigenvalue of  $\lambda = e^{2 \pi i  \theta}$, find the phase ($\theta$). A calculation for the eigenvalues of U gives $\lambda_{1} = 1$ and $\lambda_{2} = -1$. So $\theta_{1} = 0$ and $\theta_{2} = \frac{1}{2}$. The phases can be calculated on a quantum computer where $\theta_{1}$ corresponds to the measured result  $0$ and $\theta_{2}$ to $1$ because it's the only other option (using more qubits to estimate  $\frac{1}{2}$ is not neccesary in this case).</p>
+																		  \end{bmatrix} $, and an eigenvector of $U$ (1, 1), with an eigenvalue of $\lambda = e^{2 \pi i  \theta}$, find the phase ($\theta$). A calculation for the eigenvalues of U gives $\lambda_{1} = 1$ and $\lambda_{2} = -1$. So $\theta_{1} = 0$ and $\theta_{2} = \frac{1}{2}$. The phases can be calculated on a quantum computer where $\theta_{1}$ corresponds to the measured result  $0$ and $\theta_{2}$ to $1$ because it's the only other option (using more qubits to estimate  $\frac{1}{2}$ is not neccesary in this case).</p>
 
-																		  The eigenvalue can be approximated wih a single bit, so the first register will contain a qubit. The second register will also contain one qubit because $U$ is a one qubit gate (i.e X gate). To encode the eigenvector (1,1) into the second register, it has to be nomalized to $(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})$. The Hadamard gate is applied to the first qubit resulting in $\frac{1}{\sqrt{2}}[(\ket{0} + \ket{1}$. The normalized eigenvector $\ket{\psi}$ is encoded using the Hadamard gate. The state of the system is now 
+																		  <p>The eigenvalue can be approximated wih a single bit, so the first register will contain a qubit. The second register will also contain one qubit because $U$ is a one qubit gate (i.e X gate). To encode the eigenvector (1,1) into the second register, it has to be nomalized to $(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})$. The Hadamard gate is applied to the first qubit resulting in $\frac{1}{\sqrt{2}}[(\ket{0} + \ket{1}$. The normalized eigenvector $\ket{\psi}$ is encoded using the Hadamard gate. The state of the system is </p> 
 
 																		  \[  \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) = \frac{1}{\sqrt{2}} (\ket{0} \ket{0} + \ket{1} \ket{1})  \]
 
-																		  Applying the cU gate
+																		  <p>Applying the cU gate</p>
 																		  
 
 																		  \[cU [\frac{1}{\sqrt{2}} (\ket{0} \ket{0} + \ket{1} \ket{1})] = \frac{1}{\sqrt{2}} (\ket{0} \ket{0} + U \ket{1} \ket{1}) =  \frac{1}{\sqrt{2}}(\ket{0} + U \ket{1}) \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) = \frac{1}{\sqrt{2}}(\ket{0} +  e^{2 \pi i  0} \ket{1}) \frac{1}{\sqrt{2}}(\ket{0} + \ket{1})   \]
 
-																		  The inverse QFT of this equation is calculated by applying the Hadamard gate to the first qubit.
+																		  <p>The inverse QFT of this equation is calculated by applying the Hadamard gate to the first qubit.</p>
 
 																		  \[ H [\frac{1}{\sqrt{2}}(\ket{0} +  e^{2 \pi i  0} \ket{1})] \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) = \ket{0} \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \]
 
-																		  Measuring the first qubit gives $0$ as predicted by theory.
+																		  <p>Measuring the first qubit gives $0$ as predicted by theory.</p>
 																		   <h3>Phase estimation implementation on a Quantum computer</h3>
 
 																		  <pre>
@@ -77,10 +77,9 @@ print(result)
 																		  </pre>
 																		  
     
-																		  <p>To estimate $\theta_{2}$, another eigenvector of $U$ (-1, 1) normalized to $(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})$ will be loaded into the second register. This can be done by the Hadamard gate followed by the Z gate</p>
+																		  <p>To estimate $\theta_{2}$, another eigenvector of $U$ (-1, 1) normalized to $(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})$ will be loaded into the second register. This is accomplished by the the Hadamard gate followed by the Z gate</p>
 																		  \[ZH\ket{0} = \frac{1}{\sqrt{2}}(-\ket{0} + \ket{1})\]
-																		  Other instructions for this program will be the same as the previous one.
-																		  Some quick calculations will show that the first register contains $\ket{\frac{1}{2}}$.
+																		  <p>The remaining instructions for this program will be the same as the previous one.Quick calculations will show that the first register contains $\ket{\frac{1}{2}}$.</p>
 																		  <pre>
   <code>
 phase_estimation_1 = Program(
@@ -101,7 +100,7 @@ print(result)
 
 																		  
 
-																		   These programs are implemented <a href = "https://github.com/QCHackers/qchackers/blob/master/pyquil/phase_estimation.py">here</a>.
+																		   <p>These programs are implemented <a href = "https://github.com/QCHackers/qchackers/blob/master/pyquil/phase_estimation.py">here</a>.</p>
 
   </section>
 
