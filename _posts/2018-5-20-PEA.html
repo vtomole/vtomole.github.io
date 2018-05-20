@@ -15,6 +15,7 @@ $\newcommand\bra[1]{{\langle{#1}|}}$
 <p>Quantum Phase estimation is an important subroutine for quantum computing. It’s used for factoring, quantum simulation, and discrete logarithm . A version of Phase estimation called the Hadamard test is used to approximate the Jones polynomial (a significant expression in <a href = "https://en.wikipedia.org/wiki/Knot_theory">Knot theory</a>). Quantum computers can estimate phases more efficiently than classical computers because quantum computers can exploit the Quantum Fourier transform; which takes $O(n^2)$ gates on quantum computers instead of $O(n*2^n)$ gates on classical computers. This post will cover Phase Estimation and Hadamard test including their implementations on a quantum computer..
 </p> 
 <section/>
+ <section>
 <h2>Quantum Phase estimation:</h2>
 <p>Given a Unitary $\textit{U}$ and an eigenvector of  $\textit{U}$ $\ket{\psi}$ such that $U\ket{\psi}$ = $e^{2 \pi i  \theta}$ where $0 \leq \theta < 1$, find the eigenvalue $e^{2 \pi i  \theta}$ of $\ket{\psi}$ or the phase $\theta$ </p>
 
@@ -107,7 +108,7 @@ print(result)
 
 
 
-  </section>
+ <section/>
 
 
 
@@ -180,6 +181,7 @@ print(get_Re(result))
    </pre>
    
 Implementations of these Hadamard tests are <a href = "https://github.com/QCHackers/qchackers/blob/master/pyquil/hadamard_test.py">here</a>
+<section/>
     <section>
 
 <h2>Conclusion</h2>
