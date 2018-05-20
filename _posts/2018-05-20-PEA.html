@@ -105,7 +105,7 @@ print(result)
   </section>
 
    <h2>Hadamard Test</h2>
-  <p>The Hadamard test solves: Given a Unitary $U$ and a state $\ket{\psi}$, estimate $\bra{\psi} | U \ket{\psi}$. It prepares the state  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \ket{\psi}$ by appplying the hadamard gate to the first qubit,  applies cU from  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$ to $\ket{\psi} $ to get   $\frac{1}{\sqrt{2}}(\ket{0} \ket{\psi} + U \ket{1} \ket{\psi})$. After the hadamard gate is applied to the first qubit again, the probability of measuring $\ket{0}$ is \[\frac{1}{2} (1 + \text{Re} \bra{\psi} U \ket{\psi}) \] The probability of measuring $\ket{1}$ is
+  <p>The Hadamard test solves: Given a Unitary $U$ and a state $\ket{\psi}$, estimate $\bra{\psi} | U \ket{\psi}$. It prepares the state  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \ket{\psi}$ by appplying the hadamard gate to the first qubit,  applies cU from  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$ to $\ket{\psi} $ to get   $\frac{1}{\sqrt{2}}(\ket{0} \ket{\psi} + U \ket{1} \ket{\psi})$. After the Hadamard gate is applied to the first qubit again, the probability of measuring $\ket{0}$ is \[\frac{1}{2} (1 + \text{Re} \bra{\psi} U \ket{\psi}) \] The probability of measuring $\ket{1}$ is
 
     \[\frac{1}{2} (1 - \text{Re} \bra{\psi} U \ket{\psi})\]
 
@@ -129,7 +129,7 @@ $U = \begin{bmatrix}
     Applying Hadamard to the first qubit results in:
     \[ H (\frac{1}{\sqrt{2}}\ket{00} -\frac{1}{\sqrt{2}}\ket{11}) = \frac{1}{2}\ket{00} - \frac{1}{2}\ket{01} + \frac{1}{2}\ket{10} + \frac{1}{2}\ket{11} \]
 
-    This means there is a 0.5 probability qubit 1 is 0 and 0.5 that it's 1 upon measurement. 0.5 - 0.5 = 0, the expected value.
+    This means that there is a 0.5 probability qubit 1 is 0 and 0.5 that it's 1 upon measurement. 0.5 - 0.5 = 0, the expected value.
     
 
 <h3>Hadamard test implementation on a Quantum computer</h3>
@@ -148,7 +148,7 @@ print(get_Re(result))
   </code>
      </pre>
      <p>The Hadamard test is probabilistic. It will give an expectation value that is close to 0 as is predicted by theory.</p>
-      <p>What if $\ket{\psi}$ is $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$ instead of $\ket{0}$? $\bra{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} U \ket{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} = \bra{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})}  \ket{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} = 1 $. Implementing this program on a quantum computer shows that the answer is indeed 1.</p>
+      <p>What if $\ket{\psi}$ is $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$ instead of $\ket{0}$? $\bra{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} U \ket{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} = \bra{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})}  \ket{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} = 1 $. Executing this program on a quantum computer shows that the answer is 1.</p>
    <pre>
      <code>
 
@@ -165,7 +165,7 @@ print(get_Re(result))
   </code>
    </pre>
    
-Implementations of these Hadamard tests are <a href = "https://github.com/QCHackers/qchackers/blob/master/pyquil/hadamard_test.py">here</a>
+<p>Implementations of these Hadamard tests are <a href = "https://github.com/QCHackers/qchackers/blob/master/pyquil/hadamard_test.py">here</a></p>
   
 
 				    
