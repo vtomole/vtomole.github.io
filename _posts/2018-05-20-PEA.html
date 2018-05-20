@@ -9,107 +9,15 @@ date: 2018-05-20
 <section/>
 
   <section>
-    $\newcommand{\ket}[1]{\left|{#1}\right\rangle}$
+$\newcommand\ket[1]{{|{#1}\rangle}}$
+$\newcommand\bra[1]{{\langle{#1}|}}$
     
     <h2>Quantum Phase estimation</h2>
-<p>The pure state of a two-level quantum system (qubit) is represented by a $2\times1$ matrix
-\begin{align}
-\ket{\psi} = \begin{bmatrix}
-    \alpha \\
-    \beta \\
-    \end{bmatrix} = \alpha \ket{0} + \beta \ket{1}
-    \end{align}
-
-Where $\alpha$ and $\beta$ are complex numbers that represent probability amplitudes and $${|\alpha|}^2 + {|\beta|}^2 =1$$
+<p>Given a Unitary $\textit{U}$ and an eigenvector of  $\textit{U}$ $\ket{\psi}$ such that $U\ket{\psi}$ = $e^{2 \pi i  \theta}$ where $0 \leq \theta < 1$, find the eigenvalue $e^{2 \pi i  \theta}$ of $\ket{\psi}$ or the phase $\theta$ </p>
 
 
+<p> This algorithm uses 2 registers. The first register contains $m$ qubits, The more $m$ qubits, the more accurate $\theta$'s estimation will be.  The second register contains $\ket{\psi}$. Quantum Phase estimation first prepares the state $\ket{0}_{m} \ket{\psi}$ by intilizing the first $m$ qubits to $\ket{0}$ and encoding $\ket{\psi}$ in the second register. Hadamard gates are applied to each qubit in the first register</p>
 
-     The spin of an electron is a two-level quantum system where
-    \begin{align}
-\ket{0} = \begin{bmatrix}
-    1 \\
-    0 \\
-    \end{bmatrix}
-     \end{align}
-
-is spin down and
-\begin{align}
-\ket{1} = \begin{bmatrix}
-    0 \\
-    1 \\
-    \end{bmatrix}
-    \end{align}
-
-    is spin up.$\\$</p>
-    <section/>
-
-    <section>
-<h2>Operators</h2>
-<p>The state of a quantum system is modfied by applying an operator $\textit{U}$ to it. $\textit{U}$ could be a Pauli-X matrix,
-\begin{align}
-X &= \begin{bmatrix}
-    0 & 1 \\
-    1 & 0 \\
-\end{bmatrix}
-  \end{align}
-
-  or a Pauli-Z matrix.
-  
-\begin{align}
-Z &= \begin{bmatrix}
-    1 & 0 \\
-    0 & -1 \\
-\end{bmatrix}
-  \end{align}
-  
-  It can also be an identity matrix, whose application does not change the system's state.
-  \begin{align}
-I &= \begin{bmatrix}
-    1 & 0 \\
-    0 & 1 \\
-\end{bmatrix}
-  \end{align}
-  
-Operator application is realized by computing the dot product of the operator and the state. The Pauli-X operator modifies the spin of an electron from up to down and vice versa.
-
-\begin{align}
-  \begin{bmatrix}
-    0 & 1 \\
-  1 & 0 \\
-  \end{bmatrix} . \begin{bmatrix}
-    1  \\
-    0  \\
-\end{bmatrix}
- = \begin{bmatrix}
-    0 \\
-    1 \\
-\end{bmatrix}
-\end{align}
-
-     The Hadamard operator
-    \begin{align}
-    H &= \frac{1}{\sqrt{2}} \begin{bmatrix}
-    1 & 1 \\
-    1 & -1 \\
-\end{bmatrix} 
-\end{align}
-    puts an electron in an equal superposition of spin up and spin down.
-    \begin{align}
-  \frac{1}{\sqrt{2}} \begin{bmatrix}
-    1 & 1 \\
-    1 & -1 \\
-  \end{bmatrix} .
-  \begin{bmatrix}
-    1  \\
-    0  \\
-\end{bmatrix} 
-= \begin{bmatrix}
-    \frac{1}{\sqrt{2}}  \\
-    \frac{1}{\sqrt{2}} \\
-\end{bmatrix} = \frac{1}{\sqrt{2}} \ket{0} + \frac{1}{\sqrt{2}} \ket{1}
-\end{align}
-
-When this state is measured, there is a ${|\frac{1}{\sqrt{2}}|}^2 = 0.5$ chance that it will be $\ket{0}$ and ${|\frac{1}{\sqrt{2}}|}^2 = 0.5$ chance that it will be $\ket{1}.$</p>
   </section>
 
 
