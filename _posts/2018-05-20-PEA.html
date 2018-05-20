@@ -91,83 +91,69 @@ CNOT\ket{10} =  \begin{bmatrix}
 
 
    <section>
-  <h2>Superdense coding</h2>
-  <p>Two bits of information can be encoded into one qubit. Superdense coding is performed by entangling two qubits and encoding two bits by applying an operator on one qubit. Entangled qubits are sent to the receiver who uses a decoder to read the bits that were encoded.
+   <h2>Hadamard Test</h2>
+  <p>The Hadamard test solves: Given a Unitary $U$ and a state $\ket{\psi}$, estimate $\bra{\psi} | U \ket{\psi}$. It prepares the state  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \ket{\psi}$ by appplying the hadamard gate to the first qubit,  applies cU from  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$ to $\ket{\psi} $ to get   $\frac{1}{\sqrt{2}}(\ket{0} \ket{\psi} + U \ket{1} \ket{\psi})$. After the hadamard gate is applied to the first qubit again, the probability of measuring $\ket{0}$ is \[\frac{1}{2} (1 + \text{Re} \bra{\psi} U \ket{\psi}) \] The probability of measuring $\ket{1}$ is
 
-  Suppose the sender wants to send bits <i>01</i>. He will transform the first qubit into a superposition of states.
+    \[\frac{1}{2} (1 - \text{Re} \bra{\psi} U \ket{\psi})\]
 
-  
-  
-\begin{align} 
- \ket{\psi} =  H(\ket{0})= \frac{1}{\sqrt{2}} \ket{0} + \frac{1}{\sqrt{2}} \ket{1} \tag{0}
-  
-  \end{align}
+    The result we want to approximate is calculated by subtracting probabilities
+    \[ \text{Re} \bra{\psi} U \ket{\psi} = \frac{1}{2} (1 + \text{Re} \bra{\psi} U \ket{\psi}) - \frac{1}{2} (1 - \text{Re} \bra{\psi} U \ket{\psi}) \]
 
 
-  The sender will entangle this qubit with a second qubit that is spin down.
+    where $\text{Re} \bra{\psi} U \ket{\psi}$ is the real component of $\bra{\psi} U \ket{\psi}$. $\text{Im} \bra{\psi} | U \ket{\psi}$ is estimated by first preparing the state $\frac{1}{\sqrt{2}}(\ket{0} + i \ket{1})$ instead of $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$.  This is prepared by applying the Hadamard gate followed by the S gate. The steps involved in deriving expected values are <a href = "https://en.wikipedia.org/wiki/Hadamard_test_(quantum_computation)">here</a> </p>
 
-  \begin{align} 
- \ket{\psi} =  CNOT(\frac{1}{\sqrt{2}} \ket{0} + \frac{1}{\sqrt{2}} \ket{1} \otimes \ket{0}) = \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{11}\tag{1}
-  \end{align}
+  <h3>Hadamard test example</h3>
+  <p>Given a unitary 
+$U = \begin{bmatrix}
+    0 & 1 \\
+    1 & 0 \\
+    \end{bmatrix} $, and a state $\ket{1}$, estimate $\bra{1} | U \ket{1}$. $\bra{1} U \ket{1}$ = $\bra{1}\ket{0} = 0$.</p>
 
-  The X operator is applied on the first qubit.
-   \begin{align} 
- \ket{\psi} =  X \otimes I (\frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{11}) = \frac{1}{\sqrt{2}} \ket{01} + \frac{1}{\sqrt{2}} \ket{10}\tag{2}
-  \end{align}
+  <p> Encoding $\ket{1}$ is fulfilled by applying the X gate on the second qubit.
+    $\ket{0} \text{X}(\ket{0}) = \ket{0} \ket{1}$. The Hadamard gate is applied to the first qubit  $H (\ket{0}) \ket{1}$ =  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \ket{1}$. Applying CU to the system
+    \[CU [\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \ket{1}] = \frac{1}{\sqrt{2}}(\ket{0} \ket{1} + U \ket{1} \ket{1}) = \frac{1}{\sqrt{2}}(\ket{0} + U \ket{1}) \ket{1} = \frac{1}{\sqrt{2}}\ket{00} -\frac{1}{\sqrt{2}}\ket{11} \]
 
-  The reciever will use the first and second qubit to decode <i>01</i> that was encoded in the first qubit.
+    Applying Hadamard to the first qubit results in:
+    \[ H (\frac{1}{\sqrt{2}}\ket{00} -\frac{1}{\sqrt{2}}\ket{11}) = \frac{1}{2}\ket{00} - \frac{1}{2}\ket{01} + \frac{1}{2}\ket{10} + \frac{1}{2}\ket{11} \]
 
+    This means there is a 0.5 probability qubit 1 is 0 and 0.5 that it's 1 upon measurement. 0.5 - 0.5 = 0, the expected value.
+    
 
-   \begin{align} 
- \ket{\psi} =  CNOT(\frac{1}{\sqrt{2}} \ket{01} + \frac{1}{\sqrt{2}} \ket{10}) = \frac{1}{\sqrt{2}} \ket{01} + \frac{1}{\sqrt{2}} \ket{11}\tag{3}
-  \end{align}
-
-
-  \begin{align} 
-  \ket{\psi} =  H \otimes I (\frac{1}{\sqrt{2}} \ket{01} + \frac{1}{\sqrt{2}} \ket{11}\tag{4})= \ket{01}
-  
-  \end{align}
-  
-The X operator is removed to encode <i>00</i>. The Z operator is applied in place of X to encode <i>10</i>. <i>11</i>
- is encoded with Z and X.</p>
-
+<h3>Hadamard test implementation on a Quantum computer</h3>
+     <pre>
+  <code>
+ hadamard_test0 = Program(
+    X(0),
+    H(0),
+    CNOT(0, 1),
+    H(0),
+)
+print("Expected value will be closer to 0 than 100 or -100")
+result = qvm.run_and_measure(hadamard_test0, [0], 100)
+print(get_Re(result))
  
-
-
-  
-   </section>
-
-   <section>
-     <h2>Simulation of superdense coding</h2>
-
-    <p>It's not difficult to write a program simulates superdense coding. A program that consists of instructions we can run on a quantum computer is composed of commands where each line contains an operator and a qubit it's applied to. "H 1" means "Apply the Hadamard operator to qubit 1". A program that encodes and decodes bits <i>01</i> could be</p>
-
-     <pre>
-  <code>
-   H 0
-   CNOT 0 1
-   X 0 
-   CNOT 0 1
-   H 0
-   MEASURE 0
-   MEASURE 1
   </code>
-</pre>
-  
+     </pre>
+     <p>The Hadamard test is probabilistic. It will give an expectation value that is close to 0 as is predicted by theory.</p>
+      What if $\ket{\psi}$ is $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$ instead of $\ket{0}$? $\bra{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} U \ket{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} = \bra{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})}  \ket{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} = 1 $. Implementing this program on a quantum computer shows that the answer is indeed 1.
+   <pre>
+     <code>
 
-   <p>Since we don't have access to a quantum computer, we can run this program on a <a href ="https://github.com/vtomole/qchackers/blob/master/software/eagle/vm.py"> virtual machine</a> that simulates a quantum computer.
+ hadamard_test1 = Program(
+    H(1),
+    H(0),
+    CNOT(0, 1),
+    H(0),
+)
 
-   We paste the  <i>01</i> coding program into a <a href = " https://github.com/vtomole/qchackers/blob/master/software/eagle/sd_coding.eg"> file</a> and execute it on a virtual machine.</p>
-     <pre>
-  <code>
-    python vm.py python vm.py sd_coding.eg
-
-    MEASUREMENT of qubit 0 is 0 
-
-    MEASUREMENT of qubit 1 is 1 
-
+print("Expected value will 1")
+result = qvm.run_and_measure(hadamard_test1, [0], 1)
+print(get_Re(result))
   </code>
-    </pre>
+   </pre>
+   
+Implementations of these Hadamard tests are <a href = "https://github.com/QCHackers/qchackers/blob/master/pyquil/hadamard_test.py">here</a>
+  
 
 				    
 				    
