@@ -13,8 +13,80 @@ $\newcommand\ket[1]{{|{#1}\rangle}}$
 $\newcommand\bra[1]{{\langle{#1}|}}$
     
     <h2>Quantum Phase estimation</h2>
-<p>The pure state of a two-level quantum system (qubit) is represented by a $2\times1$ matrix </p>
+<p>The pure state of a two-level quantum system (qubit) is represented by  </p>
 
+  </section>
+
+
+
+  <section>
+  <h2>Quantum Entanglement</h2>
+  <p>The Controlled-NOT operator is applied to entangled systems. It flips the state of the second qubit if the state of the first qubit is 1 and leaves the second qubit unchanged if the first qubit is 0.
+
+  \begin{align}
+CNOT &= \begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 0 & 1 \\
+  0 & 0 & 1 & 0 
+\end{bmatrix}
+  \end{align}
+ The tensor product transforms a 2-level system into a 4-level system before applying the CNOT operator. 
+\begin{align}
+A \otimes B =  \begin{bmatrix}
+    A_{11} \begin{bmatrix}
+    b_{11} & b_{12} \\
+    b_{21} & b_{22} \\
+  \end{bmatrix} & A_{12} \begin{bmatrix}
+    b_{11} & b_{12} \\
+    b_{21} & b_{22} \\
+  \end{bmatrix} \\
+    A_{21} \begin{bmatrix}
+    b_{11} & b_{12} \\
+    b_{21} & b_{22} \\
+  \end{bmatrix} & A_{22} \begin{bmatrix}
+    b_{11} & b_{12} \\
+    b_{21} & b_{22} \\
+  \end{bmatrix}\\
+  \end{bmatrix}
+  \end{align}
+
+ Entangling $\ket{1}$ with $\ket{0}$ and applying CNOT on the resulting state will flip the state of the second qubit.
+\begin{align}
+  \begin{bmatrix}
+    0  \\
+    1  \\
+\end{bmatrix} \otimes \begin{bmatrix}
+    1  \\
+    0  \\
+\end{bmatrix} = \begin{bmatrix}
+    0  \\
+  0 \\
+  1 \\
+  0\\
+  \end{bmatrix} = \ket{10}
+  \end{align}
+
+  \begin{align}
+CNOT\ket{10} =  \begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 0 & 1 \\
+  0 & 0 & 1 & 0 
+\end{bmatrix}. \begin{bmatrix}
+    0  \\
+  0 \\
+  1 \\
+  0\\
+  \end{bmatrix} = \begin{bmatrix}
+    0  \\
+  0 \\
+  0 \\
+  1\\
+  \end{bmatrix} = \ket{11}
+
+  \end{align}</p>
+  
   </section>
 
 
