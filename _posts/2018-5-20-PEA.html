@@ -1,0 +1,209 @@
+<!--script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+</script>-->
+---
+layout: post
+title: "Quantum Phase Estimation Algorithm and Hadamard test"
+date: 2018-03-3
+---
+$\newcommand\ket[1]{{|{#1}\rangle}}$
+$\newcommand\bra[1]{{\langle{#1}|}}$
+  <section>
+<h1>Introduction</h1>
+<p>Quantum Phase estimation is an important subroutine for quantum computing. It’s used for factoring, quantum simulation, and discrete logarithm . A version of Phase estimation called the Hadamard test is used to approximate the Jones polynomial (a significant expression in <a href = "https://en.wikipedia.org/wiki/Knot_theory">Knot theory</a>). Quantum computers can estimate phases more efficiently than classical computers because quantum computers can exploit the Quantum Fourier transform; which takes $O(n^2)$ gates on quantum computers instead of $O(n*2^n)$ gates on classical computers. This post will cover Phase Estimation and Hadamard test including their implementations on a quantum computer..
+</p> 
+<section/>
+<h2>Quantum Phase estimation:</h2>
+<p>Given a Unitary $\textit{U}$ and an eigenvector of  $\textit{U}$ $\ket{\psi}$ such that $U\ket{\psi}$ = $e^{2 \pi i  \theta}$ where $0 \leq \theta < 1$, find the eigenvalue $e^{2 \pi i  \theta}$ of $\ket{\psi}$ or the phase $\theta$ </p>
+
+
+																		<p> This algorithm uses 2 registers. The first register contains $m$ qubits, The more $m$ qubits, the more accurate $\theta$'s estimation will be.  The second register contains $\ket{\psi}$. Quantum Phase estimation first prepares the state $\ket{0}_{m} \ket{\psi}$ by intilizing the first $m$ qubits to $\ket{0}$ and encoding $\ket{\psi}$ in the second register. Hadamard gates are applied to each qubit in the first register</p>
+															 
+															   \[ \ket{\varphi_{0}} = H^{\otimes m} [\ket{0}] \ket{\psi} =  \frac{1}{\sqrt{2^m}}[(\ket{0} + \ket{1})_{0} \, (\ket{0} + \ket{1})_{1} \, (\ket{0} + \ket{1})_{2}\, ... (\ket{0} + \ket{1})_{2^m-1}] \ket{\psi} \]
+
+																		$2^{m-1}$ controlled-U (cU) gates are applied to the second register, remember that $U \ket{\psi}$ = $e^{2 \pi i  \theta}$
+
+
+															   \[ \ket{\varphi_{1}} = cU^{2m-1}  \ket{\varphi_{0}} =  \frac{1}{\sqrt{2^m}}[(\ket{0} + e^{2 \pi i  \theta 2^{0}} \ket{1})_{0} \, (\ket{0} + e^{2 \pi i  \theta} 2^{1} \ket{1})_{1} \, (\ket{0} + e^{2 \pi i  \theta} 2^{2} \ket{1})_{2}\, ... (\ket{0} + e^{2 \pi i  \theta 2^{m-1}}  \ket{1})_{2^m-1}] \ket{\psi} \]
+
+															   This equation can be written as 
+															   \[ \ket{\varphi_{1}} = \frac{1}{\sqrt{2^m}} [ \sum_{k=0}^{ 2^{m-1}}  e^{2 \pi i  \theta k} \ket{k}] \ket{\psi}   \]
+
+Equation for computing the Quantum Fourier transform 															   
+\[\text{QFT} \ket{x} = \frac{1}{\sqrt{2^m}} \sum_{k=0}^{ 2^{m-1}}  e^{\frac{2 \pi i x k}{2^n}}  \ket{k}  \]
+
+															   The first register of $\ket{\varphi_{1}}$ is similar to QFT $\ket{x}$. This is not a coincidence. The first register is QFT $\ket{\theta}$. To get $\ket{\theta}$, the inverse of the Quantum Fourier transform (QFT in reverse) is applied to the first register. 
+
+														\begin{align}\text{QFT}^{-1} \text{QFT} \ket{\theta} = \text{QFT}^{-1} \frac{1}{\sqrt{2^m}} \sum_{k=0}^{ 2^{m-1}}  e^{2 \pi i  \theta k} \ket{k} = \ket{\theta_{0} \, \theta_{1} \,  \theta_{2} ... \, \theta_{m}  }    \end{align}
+
+																		The state of the second register doesn't change during the computation, so the final state of the system before measurement is $\ket{\theta_{0} \, \theta_{1} \,  \theta_{2} ... \, \theta_{m}   }	\ket{\psi} $. Measurement of the first register will result in an approximation of $\theta$.
+
+																		<h3>Quantum Phase estimation example</h3>
+																		<p>Given a unitary 
+$U = \begin{bmatrix}
+    0 & 1 \\
+    1 & 0 \\
+																		  \end{bmatrix} $, and an eigenvector of $U$ (1, 1), with an eigenvalue of  $\lambda = e^{2 \pi i  \theta}$, find the phase ($\theta$). A calculation for the eigenvalues of U gives $\lambda_{1} = 1$ and $\lambda_{2} = -1$. So $\theta_{1} = 0$ and $\theta_{2} = \frac{1}{2}$. The phases can be calculated on a quantum computer where $\theta_{1}$ corresponds to the measured result  $0$ and $\theta_{2}$ to $1$ because it's the only other option (using more qubits to estimate  $\frac{1}{2}$ is not neccesary in this case).</p>
+
+																		  The eigenvalue can be approximated wih a single bit, so the first register will contain a qubit. The second register will also contain one qubit because $U$ is a one qubit gate (i.e X gate). To encode the eigenvector (1,1) into the second register, it has to be nomalized to $(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})$. The Hadamard gate is applied to the first qubit resulting in $\frac{1}{\sqrt{2}}[(\ket{0} + \ket{1}$. The normalized eigenvector $\ket{\psi}$ is encoded using the Hadamard gate. The state of the system is now 
+
+																		  \[  \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) = \frac{1}{\sqrt{2}} (\ket{0} \ket{0} + \ket{1} \ket{1})  \]
+
+																		  Applying the cU gate
+																		  
+
+																		  \[cU [\frac{1}{\sqrt{2}} (\ket{0} \ket{0} + \ket{1} \ket{1})] = \frac{1}{\sqrt{2}} (\ket{0} \ket{0} + U \ket{1} \ket{1}) =  \frac{1}{\sqrt{2}}(\ket{0} + U \ket{1}) \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) = \frac{1}{\sqrt{2}}(\ket{0} +  e^{2 \pi i  0} \ket{1}) \frac{1}{\sqrt{2}}(\ket{0} + \ket{1})   \]
+
+																		  The inverse QFT of this equation is calculated by applying the Hadamard gate to the first qubit.
+
+																		  \[ H [\frac{1}{\sqrt{2}}(\ket{0} +  e^{2 \pi i  0} \ket{1})] \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) = \ket{0} \frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \]
+
+																		  Measuring the first qubit gives $0$ as predicted by theory.
+																		   <h3>Phase estimation implementation on a Quantum computer</h3>
+
+																		  <pre>
+  <code>
+phase_estimation_0 = Program(
+    H(0),
+    H(1),
+    CNOT(0, 1), #CNOT is another name for cX which is cU in this example
+    H(0),
+)
+print("Expected answer is 0")
+result = qvm.run_and_measure(phase_estimation_0, [0], 1)
+print(result)
+ 
+</code>
+																		  </pre>
+																		  
+    
+																		  <p>To estimate $\theta_{2}$, another eigenvector of $U$ (-1, 1) normalized to $(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})$ will be loaded into the second register. This can be done by the Hadamard gate followed by the Z gate</p>
+																		  \[ZH\ket{0} = \frac{1}{\sqrt{2}}(-\ket{0} + \ket{1})\]
+																		  Other instructions for this program will be the same as the previous one.
+																		  Some quick calculations will show that the first register contains $\ket{\frac{1}{2}}$.
+																		  <pre>
+  <code>
+phase_estimation_1 = Program(
+    H(0),
+    Z(0),
+    H(1),
+    CNOT(0, 1), #CNOT is another name for CX which is CU in this example
+    H(0),
+)
+print("Expected answer is 1")
+result = qvm.run_and_measure(phase_estimation_1, [0], 1)
+print(result)
+ 
+</code>
+																		  </pre>
+
+
+
+																		  
+
+																		   These programs are implemented <a href = "https://github.com/QCHackers/qchackers/blob/master/pyquil/phase_estimation.py">here</a>.
+															     
+
+															   
+
+
+								
+
+
+
+
+
+  </section>
+
+
+
+
+
+   <section>
+<section>
+
+ 
+    
+    <h2>Hadamard Test</h2>
+  <p>The Hadamard test solves: Given a Unitary $U$ and a state $\ket{\psi}$, estimate $\bra{\psi} | U \ket{\psi}$. It prepares the state  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \ket{\psi}$ by appplying the hadamard gate to the first qubit,  applies cU from  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$ to $\ket{\psi} $ to get   $\frac{1}{\sqrt{2}}(\ket{0} \ket{\psi} + U \ket{1} \ket{\psi})$. After the hadamard gate is applied to the first qubit again, the probability of measuring $\ket{0}$ is \[\frac{1}{2} (1 + \text{Re} \bra{\psi} U \ket{\psi}) \] The probability of measuring $\ket{1}$ is
+
+    \[\frac{1}{2} (1 - \text{Re} \bra{\psi} U \ket{\psi})\]
+
+    The result we want to approximate is calculated by subtracting probabilities
+    \[ \text{Re} \bra{\psi} U \ket{\psi} = \frac{1}{2} (1 + \text{Re} \bra{\psi} U \ket{\psi}) - \frac{1}{2} (1 - \text{Re} \bra{\psi} U \ket{\psi}) \]
+
+
+    where $\text{Re} \bra{\psi} U \ket{\psi}$ is the real component of $\bra{\psi} U \ket{\psi}$. $\text{Im} \bra{\psi} | U \ket{\psi}$ is estimated by first preparing the state $\frac{1}{\sqrt{2}}(\ket{0} + i \ket{1})$ instead of $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$.  This is prepared by applying the Hadamard gate followed by the S gate. The steps involved in deriving expected values are <a href = "https://en.wikipedia.org/wiki/Hadamard_test_(quantum_computation)">here</a> </p>
+
+  <h3>Hadamard test example</h3>
+  <p>Given a unitary 
+$U = \begin{bmatrix}
+    0 & 1 \\
+    1 & 0 \\
+    \end{bmatrix} $, and a state $\ket{1}$, estimate $\bra{1} | U \ket{1}$. $\bra{1} U \ket{1}$ = $\bra{1}\ket{0} = 0$.</p>
+
+  <p> Encoding $\ket{1}$ is fulfilled by applying the X gate on the second qubit.
+    $\ket{0} \text{X}(\ket{0}) = \ket{0} \ket{1}$. The Hadamard gate is applied to the first qubit  $H (\ket{0}) \ket{1}$ =  $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \ket{1}$. Applying CU to the system
+    \[CU [\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \ket{1}] = \frac{1}{\sqrt{2}}(\ket{0} \ket{1} + U \ket{1} \ket{1}) = \frac{1}{\sqrt{2}}(\ket{0} + U \ket{1}) \ket{1} = \frac{1}{\sqrt{2}}\ket{00} -\frac{1}{\sqrt{2}}\ket{11} \]
+
+    Applying Hadamard to the first qubit results in:
+    \[ H (\frac{1}{\sqrt{2}}\ket{00} -\frac{1}{\sqrt{2}}\ket{11}) = \frac{1}{2}\ket{00} - \frac{1}{2}\ket{01} + \frac{1}{2}\ket{10} + \frac{1}{2}\ket{11} \]
+
+    This means there is a 0.5 probability qubit 1 is 0 and 0.5 that it's 1 upon measurement. 0.5 - 0.5 = 0, the expected value.
+    
+
+<h3>Hadamard test implementation on a Quantum computer</h3>
+     <pre>
+  <code>
+ hadamard_test0 = Program(
+    X(0),
+    H(0),
+    CNOT(0, 1),
+    H(0),
+)
+print("Expected value will be closer to 0 than 100 or -100")
+result = qvm.run_and_measure(hadamard_test0, [0], 100)
+print(get_Re(result))
+ 
+  </code>
+     </pre>
+     <p>The Hadamard test is probabilistic. It will give an expectation value that is close to 0 as is predicted by theory.</p>
+      What if $\ket{\psi}$ is $\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$ instead of $\ket{0}$? $\bra{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} U \ket{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} = \bra{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})}  \ket{\frac{1}{\sqrt{2}}(\ket{0} + \ket{1})} = 1 $. Implementing this program on a quantum computer shows that the answer is indeed 1.
+   <pre>
+     <code>
+
+ hadamard_test1 = Program(
+    H(1),
+    H(0),
+    CNOT(0, 1),
+    H(0),
+)
+
+print("Expected value will 1")
+result = qvm.run_and_measure(hadamard_test1, [0], 1)
+print(get_Re(result))
+  </code>
+   </pre>
+   
+Implementations of these Hadamard tests are <a href = "https://github.com/QCHackers/qchackers/blob/master/pyquil/hadamard_test.py">here</a>
+    <section>
+
+<h2>Conclusion</h2>
+<p>Finding the eigenvalues of an operator is an important problem in Linear algebra. Quantum Phase Estimation and it's cousin the Hadamard test are important subroutines for quantum algorithms that leverage the Quantum fourier transform to perform operations more efficiently on quantum computers than classical computers. Phase estimation can be used in quantum simulation and factoring. The Hadamard test is used to solve the Jones polynomial; which is important in knot and topological quantum field theories. This post covered examples of how the Hadamard test and Phase Estimation algorithm work.
+</p>
+<section/>
+
+ <section>
+<h2>References</h2>
+<ul>
+  <li><a href = "https://en.wikipedia.org/wiki/Hadamard_test_(quantum_computation)">Wikipedia entry on Hadamard Test</a></li>
+  <li><a href = "https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm">Wikipedia entry Quantum phase estimation</a></li>
+  <li><a href = "https://en.wikipedia.org/wiki/Quantum_Fourier_transform">Wikipedia entry on Quantum Fourier transform</a></li>
+  
+  
+</ul>
+<section/>
+
+
