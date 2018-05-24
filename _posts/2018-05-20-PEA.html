@@ -30,10 +30,10 @@ $\newcommand\bra[1]{\langle{#1}|}$
 															   <p>This equation can be written as</p> 
 															   \[ \ket{\varphi_{1}} = \frac{1}{\sqrt{2^m}} [ \sum_{k=0}^{ 2^{m-1}}  e^{2 \pi i  \theta k} \ket{k}] \ket{\psi}   \]
 
-<p>Equation for computing the Quantum Fourier transform</p> 															   
+<p>Which is similiar to the Quantum Fourier transform</p> 															   
 \[\text{QFT} \ket{x} = \frac{1}{\sqrt{2^m}} \sum_{k=0}^{ 2^{m-1}}  e^{\frac{2 \pi i x k}{2^n}}  \ket{k}  \]
 
-															   <p>The first register of $\ket{\varphi_{1}}$ is similar to QFT $\ket{x}$. This is not a coincidence. The first register is QFT $\ket{\theta}$. To get $\ket{\theta}$, the inverse of the Quantum Fourier transform (QFT in reverse) is applied to the first register.</p> 
+															   <p>The first register of $\ket{\varphi_{1}}$ is similar to QFT $\ket{x}$ (QFT $\ket{\theta}$). To get $\ket{\theta}$, the inverse of the Quantum Fourier transform (QFT in reverse) is applied to the first register.</p> 
 
 														\begin{align}\text{QFT}^{-1} \text{QFT} \ket{\theta} = \text{QFT}^{-1} \frac{1}{\sqrt{2^m}} \sum_{k=0}^{ 2^{m-1}}  e^{2 \pi i  \theta k} \ket{k} = \ket{\theta_{0} \, \theta_{1} \,  \theta_{2} ... \, \theta_{m}  }    \end{align}
 
