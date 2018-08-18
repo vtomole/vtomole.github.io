@@ -1,100 +1,12 @@
 ---
 layout: default
-title: Homepage
+title: Victory Omole's Blog
 ---
+<h1>{{ page.title }}</h1>
+<ul class="posts">
 
-		<div class="blurb">
-			<h1>Victory's Portfolio</h1>
-			
-
-			<p><h2>Career Objective</b></h2>
-			<p>To participate in the worldwide effort of building a large scale Quantum computer.</p>
-
-			
-			
-			<projects>
-			  <p><h2>QChackers: Hacking Quantum Computers</h2></p>
-<p>Description: QChackers is a long term project Quantum computing project consisting of undergraduate students from around the country. I started QChackers in September 2017 as a vehicle for learning Quantum computation. We work on Quantum algorithms and Quantum software. <p/>
-			 <p>Role: Project lead </p>
-			  <p>Skills and knowledge gained</p>
-			    
-  <ul>
-    <li>Simulating physics experiments using HFSS</li>
-    <li> Writing Quantum virtual machines</li>
-    <li> Quantum algorithms</li>
-    <li>Physical implementations of Ion trap, Optical, and Superconducting Quantum computers</li>
-    <li> Quantum error correction</li>
-  </ul>  
-  
-
-			  <p>Resources used</p>
-			  <ul>
-			    <li>Slack</li>
-			    <li>HFSS</li>
-			    <li>Github</li>
-			    <li>Academic journals</li>
-   
-			    </ul>
-			      
-			  <p><b>qchackers subprojects</b></p>
-
-			  	  <ul>
-				    <li><a href="http://qchackers.com/viz">qc-hack-harvard</a>: Visualizing quantum algorithms on the web browser</li>
-				    <dd>- Most newbie quantum computing engineers have problems visualizing how quantum algorithms work with respect to the bloch sphere. This project solves that problem by helping engineers visualize how a state vector looks like when a quantum gate is applied to a qubit. The front end is implemented in Meteorjs and the quantum virtual machine is implemented in Python</dd>
-
-				    <li><a href="https://github.com/QCHackers/kite">kite</a>: A Quantum programming language built at Hack ISU in Spring 2018.</li>
-				   
-				  
-				    
-				    
-				  </ul>
-		
-
-			 
-<p><h2> AIPlayground: Learning about Machine Learning</h2></p>
-			  <p>Description: This is a project I spent the summer of 2016 on. It was inspired by a computer defeated the world's best Go player. This motivated me to spend a summer learning about machine learning. I also learned web development by blogging about what I was learning.<a href="https://victorysaiplayground.herokuapp.com/"> AIPlayground</a> allows users to create accounts, login, logout, and comment on my posts. It was the most complex software project I had worked on up to that point.  <p/>
-			    
-			  <p> Role: Web and Machine Learning developer</p>
-			  
-
-			    <p>Skills and knowledge gained<p>
-			     <ul>
-			    <li> GPU CUDA programming</li>
-			    <li>Tensorflow</li>
-			    <li>Torch</li>
-			    <li>Caffe</li>
-			    <li>Django</li>
-			       </ul>
-			  <p> Resources used</p>
-			   <ul>
-			    <li>Nvidia GTX 970</li>
-			    <li>Github</li>
-			    <li>Tensorflow</li>
-			    <li>Stanford's CS231n course</li>
-			    <li>Cloud9 IDE</li>
-			   
-			       </ul>
-			   </p>
-
-
-			 
-			  <p><h2>Senior Design Project</h2></p>
-
-			  <p><a href="https://github.com/vtomole/c48f">C48</a>: A compiler that students can use to learn about compilers </p>
-			<p>Description: This is a project that I proposed for senior design. Once I got 4 students on board with the project, we got started implementing it right away. The project is currently incomplete; although we are planning on having a decent programming language by May of next year. The programming language that we are designing is supposed to be like a Statically Typed Python with a C-like syntax. It is meant for people who don't know about programming to learn about how programming languages  and compilers work. <p/>
-			
-			  <p>Role: Project Lead</p>
-			   <p>Skills and knowledge gained</p>
-			     <ul>
-			    <li>Implementing Lexers, Parsers, and Evaluators in the C programming language</li>
-			    
-			     </ul>
-			     
-			  <p>Big picture contribution</p>
-			   <ul>
-			    <li>Lead a team that was not experienced in implementing programming languages</li>			    
-			       </ul>
-			 
-
-
-			 
+  {% for post in site.posts %}
+    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+  {% endfor %}
+    
+</ul>
