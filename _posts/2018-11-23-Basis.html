@@ -56,7 +56,7 @@ def main():
         cirq.CNOT(alice, bob),
     ])
     
-    # Bell Basis Measurement on state and Alice's qubit
+    # Bell Basis measurement on state and Alice's qubit
     circuit.append([
         cirq.CNOT(state, alice),
         cirq.H(state),
@@ -65,13 +65,12 @@ def main():
     
     ])
     
-    # Classical communcation. This simulates Bob applying
+    # Classical communication. This simulates Bob applying
     # operations on his qubit based on the bits he receives from Alice
     circuit.append([cirq.CNOT(alice, bob),
                     cirq.CZ(state, bob),
     ])
-
-    print(circuit)
+    
     circuit.append([cirq.measure(bob, key='b')])
     result = cirq.google.XmonSimulator().run(circuit)
     bob_measurement = np.array(result.measurements['b'][:, 0])
