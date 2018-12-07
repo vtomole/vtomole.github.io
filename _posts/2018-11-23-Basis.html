@@ -1,0 +1,101 @@
+---
+layout: post
+title: "Quantum Teleportation and Basis Measurements"
+date: 2018-11-23
+---
+ <section>
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+</script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+$\newcommand{\ket}[1]{\left|{#1}\right\rangle}$
+$\newcommand\bra[1]{\langle{#1}|}$
+ 
+
+<p>It's easy to be confused on what "measuring on a basis" means; especially if one is not familiar with Linear Algebra. Measuring on a basis is measuring the state $\ket{\psi}$ = $\alpha \ket{\upsilon  }$ +  $\beta \ket{\omega }$  where $\ket{\psi}$ is expressed in terms of the basis $\left\{ \ket{\upsilon  }, \ket{\omega } \right\}$. Measurements are represented by a set of operators $P_i$ satisfying $\sum_{i}^{} P_i =  \mathbb{I}$. This means that measurement on a basis  $\left\{ \ket{\upsilon  }, \ket{\omega } \right\}$ is defined as the operators  $P_{\upsilon}$ = $\ket{\upsilon} \bra{\upsilon}$, $P_{\omega}$ = $\ket{\omega} \bra{\omega}$. When $\ket{\psi}$ is measured, it's outcome is $i$ with probability $p_i$ = $\bra{\psi} P_i \ket{\psi}$. Measurement in the standard basis $\left\{ \ket{0}, \ket{1} \right\}$ is then $P_0$ = $\ket{0} \bra{0}$, $P_1$ = $\ket{1} \bra{1}$.  This makes $p_0$ = ($\alpha \bra{0 }$ +  $\beta \bra{1}$) *  ($\ket{0} \bra{0}$) * ($\alpha \ket{0 }$ +  $\beta \ket{1}$) =  ${\mid {\alpha} \mid}^2$. </p>
+
+<p>Measurements can be done on any orthornormal basis where  $\ket{\upsilon  }$ is measured with probability ${\mid {\alpha} \mid}^2$ and  $\ket{\omega  }$ is measured with probability  ${\mid {\beta} \mid}^2$. Since qubits have the states  $\left\{ \ket{0}, \ket{1} \right\}$, a method for performing measurements in a basis through the quantum circuit model where $\ket{0}$ represents $\ket{\upsilon}$ and $\ket{1}$ represents $\ket{\omega}$ is done with a unitary gate corresponding to the appropriate basis change followed by a measurement operator in the standard basis. <p>
+
+<p> In the quantum teleportation protocol, two parties Alice and Bob share an EPR pair $\frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{11} $. If these parties are separated, the measurements on their respective qubits will be correlated. If Alice has another qubit in the state  $\ket{\psi}$ = $\alpha \ket{0}$ +  $\beta \ket{1}$ and she wants to give it to Bob, she can do it using her half of the EPR pair and classical communication. Alice will perform a Bell Basis measurement on her EPR qubit with the quantum state she wants to transmit to Bob. Remember, a quantum gate followed by a measurement in the computational basis is a measurement in a different basis; so a  Bell Basis measurement will be a CNOT gate from the unknown quantum state to Alice's EPR pair followed by a Hadamard gate to the unknown quantum state. This is a Bell Basis measurement because the Bell state is prepared by applying a Hadamard gate on the first qubit followed by a CNOT gate from the first to the second qubit. Alice will then send the results of her Bell Basis measurements to Bob via 2 bits. Bob will perform operations on his half of the EPR pair based on the bits he receives from Alice to get the state that Alice wants to teleport to him. If he recieves $\ket{00}$, he will apply the identity gate. If he receives $\ket{01}$, he will apply the X gate, if he receives $\ket{10}$, he will apply the Z gate, and if he recieves $\ket{11}$, he will apply both the X and Z gates. </p>
+
+<p> If Alice wants to teleport $\ket{1}$ to Bob, she can do so with the following procedure: </p>
+
+<pre>
+  (0, 0):------X-----------@----H----M('s')-----@--------------
+                           |                    |
+  (0, 1): ------H------@---X---------M('a')--@--|---------------
+                       |                     |  |
+  (0, 2): -------------X---------------------X -@ -----M('b')---
+</pre>
+The following is a program that represents the corresponding circuit:
+  <pre class="prettyprint lang-python">
+"""To demonstrate teleportation on a NISQ machine """
+import numpy as np
+import cirq
+
+def main():
+    """
+    Output: The result of measuring Bob's qubit [True]
+    """
+    state = cirq.GridQubit(0, 0)
+    alice = cirq.GridQubit(0, 1)
+    bob = cirq.GridQubit(0, 2)
+    circuit = cirq.Circuit()
+    
+    # Prepare the state to be |1>   
+    circuit.append([
+        cirq.X(state),
+    ])
+
+    # Prepare shared entangled state.
+    circuit.append([
+        cirq.H(alice),
+        cirq.CNOT(alice, bob),
+    ])
+    
+    # Bell Basis measurement on state and Alice's qubit
+    circuit.append([
+        cirq.CNOT(state, alice),
+        cirq.H(state),
+        cirq.measure(state, key='s'),
+        cirq.measure(alice, key='a'),
+    
+    ])
+    
+    # Classical communication. This simulates Bob applying
+    # operations on his qubit based on the bits he receives from Alice
+    circuit.append([cirq.CNOT(alice, bob),
+                    cirq.CZ(state, bob),
+    ])
+    
+    circuit.append([cirq.measure(bob, key='b')])
+    result = cirq.google.XmonSimulator().run(circuit)
+    bob_measurement = np.array(result.measurements['b'][:, 0])
+
+    print("The result of measuring Bob's qubit ", bob_measurement)
+
+
+if __name__ == '__main__':
+        main()
+
+
+</pre>
+  
+
+  </p>
+<section/>
+
+  <section/>
+
+
+
+
+  <h2>References</h2>
+<ul>
+  <li><a href = "https://www.cs.cmu.edu/~odonnell/quantum15/lecture03.pdf">Lecture 3: The Power of Entanglement</a></li>
+  
+</ul>
+<section/>
