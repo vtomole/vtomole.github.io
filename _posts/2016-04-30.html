@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1> Backpropagation using an alternative Activation Function</h1>
+
+<p>
+The tutorial that I've been using to study neural networks uses the logistic function to predict the output of a truth table using three inputs. The table below shows the three inputs x,y, z and an output. As you can see, x is exactly the same as the output. These are the kinds of patterns that neural networks are supposed to recognize. This is also the same method that humans use to learn, by recognizing patterns. The difficulty is just how complex those patterns are.</p>
+<p> The example that I was using, which is cited below; uses a logistic function to predict the output. I was wondering if I could get the same behaviour from a simple neural network using a different Activation Function. The Activation Function that I used is called the Tanh function. The Tanh function is explained well <a href ="http://mathworld.wolfram.com/HyperbolicTangent.html">here</a>. If you look at this function's graph, it looks similar to the logistic function except instead of having a range from 0 to 1, it has a range from -1 to 1. I don't know enough about neural networks to tell when you want to use a certain function over another, but I will find out soon enough! </p>
+
+
+<table border="1">
+<tr>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+<td>output</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>1</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</table>
+<p> These were the results I got after training the neural network 100,000 times.
+
+<table border="1">
+<tr>
+<td>Output After Training</td>
+<td>Expected</td>
+</tr>
+<tr>
+<td>-0.99999703</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>-0.99999702</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>0.99999702</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0.99999703</td>
+<td>1</td>
+</tr>
+
+</table>     
+
+<p>As you can see, the results are not completely perfect, but the network and the inputs were easy enough for them to be close, this shows that learning is never perfect and there is always some error that we have to account for in all our learning algorithms.
+
+<p>Reference:</p>
+<p>Trask, Andrew. "A Neural Network in 11 Lines of Python (Part 1)." Iamtrask. N.p., 12 July 2015. Web. 30 Apr. 2016. </p>
+
+</body>
+</html> 

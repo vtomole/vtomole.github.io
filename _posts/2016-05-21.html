@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Neural Networks and Function Approximations{% endblock %}
+{% block head %} Neural Networks and Function Approximations{% endblock %}
+{% block content %}
+{% csrf_token %}
+
+ {% if user.username %}
+ 
+    <p>The most significant lesson that I learned this week is that neural networks are just elaborate function approximation tools. That is the only reason they exist, to approximate functions.
+    When you are performing supervised learning, you have a function that you know, but your artificial neural network doesn’t.  
+    You then tweak the weights and biases of this network until your network’s function is exactly the same one that you have. 
+    Michael Nielsen give some great examples of how neural networks compute any function. You can find that material here. 
+    Since artificial neural networks are used to approximate functions with as little error as possible, they are great for reinforcement learning. 
+    The Backpropagation Algorithm, specifically The Gradient decent is used to find the minimum of the function so that the error is as small as possible. </p>
+
+<p>To make these ideas concrete, suppose that you wanted to train a robot how to shake a hand, what you do is give it a lot of data of people shaking hands with a dummy robot. 
+This data would not specifically be videos, but only the data of the Markov states, the value functions and the amount of reward that the dummy robot is getting. 
+The robot would then; through trial- and error, use this data to tweak its neural networks so that it could shake someone’s hand.
+The best part would be that you wouldn’t have to program the robot to shake someone’s hand! It would learn on its own! 
+</p>
+
+{% else %}
+ Welcome annonymous user! To read my blog posts, and get access to other cool AI related content, you will need to
+             <a href ="/login/"> login</a>,
+            or <a href ="/register/" >register</a> if you don't have an account yet.
+{% endif %}
+{% endblock %}

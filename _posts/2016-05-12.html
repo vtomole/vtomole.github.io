@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Into The Markov Reward Process</title>
+</head>
+<body>
+
+<h1>Into The Markov Reward Process</h1>
+<p>
+The last post talked about Markov Chains, so the next step is to use these chains to implement a reward process that is the basis for Reinforcement Learning. The reward process (Specifically the Markov Reward Process) is composed of a state space, a state transition matrix, a reward function, and a discount factor. 
+The discount factor just represents how much importance the agent puts on getting a reward immediately versus getting a reward later. When the discount factor is 0, the agent will do an action that will give it a reward immediately, when the factor is 1, then the agent places an importance on delayed gratification. For example, if someone offers me a cake and my discount factor is 0, I am looking for an instant gratification, so I would eat the cake immediately. But when my discount factor is one, I politely say no to the cake and eat an apple instead. The second decision is better for my health so I was aiming for a long term gratification.</p>
+
+
+<p>Every state in the state diagram should be labeled with a reward. This reward could be based on a point system. For the state diagram that I made in my last post, I would say that sleeping gives me a reward of 1 point, studying gives me a reward of 10 points, eating gives me a reward of 3 points and hanging out online is -14 points (because hanging out online tends to be a time-waster and it is the most addictive compared to other states on this diagram). The reward and discount factor can be mixed into one equation that keeps track of how much the agent is getting as it moves from one state to another. This equation is called the return. In any Markov Reward Process, we want to maximize our return.</p>
+ 	<p>Now that we have defined the return, we can move on to the value function. the value function represents the value of a function after many state transitions. It is dependent on the discount factor. If the discount factor is 0, then the value of that state is the same as the reward of that state since the agent wants an instant reward. But as the discount factor moves away from 0, the state value of a certain state will not be the same as the reward of that state since the long term reward will be of a higher priority to the agent.</p>
+
+
+<p>You can make a Bellman function using the properties of a value function. The Bellman function states that the value of a state is based on the reward of that state added with the values of the outgoing states multiplied with the probabilities of coming out of your state and going to the next states. Simply put, the Bellman equation is:  v = r + d + p * v where v is the value, r is the reward, d is the discount, and p is the transition probability matrix. The Bellman equation is very important because it breaks a big problem into “bite-sized” sub problems that we are capable of solving.</p>
+
+<p>References:</p>
+<p>Silver, David. "Markov Decision Processes." SpringerReference (n.d.): n. pag. David Silver. University College London, 2015. Web. 12 May 2016.</p>
+
+</p>
+
+</body>
+</html>
