@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Into Reinforcement Learning"
+date: 2016-06-25
+---
+<p>	I have spent the past few weeks trying to understand Recurrent Neural Networks; either they are very simple to understand, or I am missing something. What I know is that Recurrent Neural Networks(Rnns) are meant to keep track of sequences. This makes Rnns good for machine translation, speech recognition, and natural language processing. </p>
+
+	<p>Recurrent Neural Networks are recursive, hence their name. They are composed of cells. These cells have the basic components of neural networks in that they are just nodes that are connected together just like normal neural networks. The difference is that recurrent neural networks can also connect to themselves, hence where the name “recurrent” comes from. This makes it so that unlike a basic or a convolution neural network, a recurrent neural network has memory. For example, a Recurrent Neural Network can be used to predict a word based on previous words. There is one glaring problem for Rnns, the vanishing gradient problem. The vanishing gradient problem is when training a neural network becomes more difficult as the Rnn gets bigger. </p> 
+
+	<p>This is why we need to use Long Short Term Memory Networks (LSTMs), These networks can hold memory for a very long time. LSTMs are like Rnns where they can hold a state that can be updated; and there are functions inside the neural network that holds the current inputs and the previous outputs. But an LSTM can hold memory for a longer period of time. An LSTM cell can decide on how long to hold a value and how long to forget it based on how important that particular value(memory) is. This is a ingenious method of trying to simulate human memory.</p>
+
+	<p>Rnns are networks that that can take inputs and output values based on activation functions like normal neural networks, the difference is that (Rnns) can connect to themselves in a recursive manner. This makes them capable of predicting outputs based their own inputs (having a memory). Normal Rnns don't have good memory. That is why LSTMs are used in practice because they can hold memory for as much time as they need to.
+</p>

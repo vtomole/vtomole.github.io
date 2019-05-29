@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Into Reinforcement Learning"
+date: 2016-05-09
+---
+<h1>Into Reinforcement Learning</h1>
+<p>
+The basic premise of this type of learning is that an agent only does things that can maximize its reward. The agent doesn’t know if what its doing is good or bad, you just give it a reward if it does what you want. This is the same concept that can also be applied to animals, a classic example of this type of learning is Pavlov’s dog. Another example is the way children learn. Children get punished when they don't do what an authority figure wants of them, and they get rewarded when they do what an authority figure wants.</p>
+
+<p> The same principle can be applied to an agent. An agent takes in an observation, a reward from the environment and then it outputs an action to the environment. The 
+agent that takes in these inputs and outputs can be thought of as a black box for now, but inside that black box, there are algorithms that calculate the output based on the rewards and the state of the environment that the agent is in. This self-perpetuating cycle is another type of machine learning.
+</p>
+
+To get started on Reinforcement Learning, I wrote a program that guesses a random number and terminates if the number that was guessed is correct, the program is extremely simple, if fact this program is not AI related whatsoever. It's just random number checker, but it's a start nonetheless. It goes against the true nature of reinforcement learning but it gets some of the basics correct. The random function guesses a number, if the number that is guessed is not 9, then the program keeps guessing a number until it guesses the correct one. The problem with this program is that I am not giving it a reward, and it’s not learning that 9 is the correct answer. What I need to do is have a point system where if it guesses 9, I give it 1 point, if it guesses anything else, I subtract one point and my agent should learn that by guessing 9, it will earn more points.
+</p>
+<p>References:</p>
+<p>Silver, David. "Lecture 1: Introduction to Reinforcement Learning." (n.d.): n. pag. 2015. Web. 5 May 2016. http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching_files/intro_RL.pdf. </p>
