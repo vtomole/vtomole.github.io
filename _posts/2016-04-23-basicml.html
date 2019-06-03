@@ -3,8 +3,6 @@ layout: post
 title: "Basic Machine Learning"
 date: 2016-04-23
 ---
-
-<h1>Basic Machine learning</h1>
 <p>Backpropagation is the standard Machine Learning algorithm. From what I understand, It works like this:</p>
 
 <p>1. Set all the weights of your neural network to random values.</p>
@@ -14,13 +12,17 @@ date: 2016-04-23
 <p>5. Keep doing this over and over again until your network gets the output that you want. Once this happens, your neural network has learned.</p>
 <p>This is called Supervised Learning because you can check if your network is correct or not by comparing the results of your network to your training examples.</p>
 
-<p>The weights are adjusted using the Gradient Decent Algorithm. This is how the weights and biases are tweaked. The Gradient Decent is summarized well <a href ="http://mathworld.wolfram.com/MethodofSteepestDescent.html">here.</a>. It finds the local minimum of a function. This is when the slope of the function is zero. (In other words, when the derivative of the function is equal to 0.) The problem is you can only efficiently find the derivative of a function that has a few variables. Neural Networks can get very big, sometimes having millions of variables. 
+<p>The weights are adjusted using the Gradient Decent Algorithm. This is how the weights and biases are tweaked. The Gradient Decent is summarized well 
+    <a href ="http://mathworld.wolfram.com/MethodofSteepestDescent.html">here</a>. It finds the local minimum of a function. This is when the slope of the function is zero. (In other words, when the derivative of the function is equal to 0.) The problem is you can only efficiently find the derivative of a function that has a few variables. Neural Networks can get very big, sometimes having millions of variables. 
 So computing the the derivatives of these types of functions is computationally intensive. That is why the Gradient Decent Algorithm is used for huge networks. 
 The next step for me is to write a program for the Gradient Decent Algorithm and maybe also a program that can compute general derivatives. </p>
-<h2>Lessons Learned:</h2>
-<p>1. Backpropagation finds the error that your weights have by comparing your neural network’s output to the output that you want you network to have.</p>
-<p>2. The Gradient Decent Algorithm is used to adjust these weights.</p>
 
-<p>References:</p> 
+<p>Summary: Backpropagation finds the error that your weights have by 
+    comparing your neural network’s output to the output that you want you network to have and 
+    the Gradient Decent Algorithm is used to adjust these weights.</p>
+
+<p> Discuss on <a href = "https://github.com/vtomole/vtomole.github.io/issues/3">Github</a></p>
+
+<h2>References:</h2> 
 <p>Michael A. Nielsen, “Neural Networks and Deep Learning”</p>
 <p>Trask, Andrew. "A Neural Network in 13 Lines of Python (Part 2 - Gradient Descent)." - I Am Trask. N.p., 27 July 2015. Web. 23 Apr. 2016.</p>

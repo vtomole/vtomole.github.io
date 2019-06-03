@@ -11,6 +11,9 @@ If I had more time to present, I would have taken the opportunity to talk about 
 
 Overall, I feel like the presentation went extremely well. I would redo this talk if I had 15 minutes to explain quantum computing to Undergraduate Engineering Students.
 
+Discuss on [Github]
+
+[Github]: https://github.com/vtomole/vtomole.github.io/issues/11
 [Introduction to Quantum computing]: https://vtomole.github.io/static/qcintrofan.pdf
 
 [pyQuil]:https://github.com/rigetticomputing/pyquil

@@ -22,7 +22,9 @@ Hack ISU was the first time Dylan studied quantum computation. His task was to g
 
 Hack ISU Spring 2018 was my most productive hackathons. I was lucky to work with someone who knew quantum computing, and another who was eager learn. Without Dylan’s newfound knowledge of quantum teleportation and Evan’s expertise in Python programming and web development, we wouldn’t have accomplished as much as we did. I would definitely hack with this group of Qchackers again!
 
+Discuss on [Github]
 
+[Github]: https://github.com/vtomole/vtomole.github.io/issues/13
 [SDK for quantum computers]: http://qchackers.com
 [AWS Education prize]: https://twitter.com/MLHacks/status/977959734467858433	
 

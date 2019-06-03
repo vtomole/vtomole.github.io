@@ -3,8 +3,6 @@ layout: post
 title: "Into Markov Chains"
 date: 2016-05-11
 ---
-
-<h1>Into The Markov Reward Process</h1>
 <p>
 The last post talked about Markov Chains, so the next step is to use these chains to implement a reward process that is the basis for Reinforcement Learning. The reward process (Specifically the Markov Reward Process) is composed of a state space, a state transition matrix, a reward function, and a discount factor. 
 The discount factor just represents how much importance the agent puts on getting a reward immediately versus getting a reward later. When the discount factor is 0, the agent will do an action that will give it a reward immediately, when the factor is 1, then the agent places an importance on delayed gratification. For example, if someone offers me a cake and my discount factor is 0, I am looking for an instant gratification, so I would eat the cake immediately. But when my discount factor is one, I politely say no to the cake and eat an apple instead. The second decision is better for my health so I was aiming for a long term gratification.</p>
@@ -16,7 +14,6 @@ The discount factor just represents how much importance the agent puts on gettin
 
 <p>You can make a Bellman function using the properties of a value function. The Bellman function states that the value of a state is based on the reward of that state added with the values of the outgoing states multiplied with the probabilities of coming out of your state and going to the next states. Simply put, the Bellman equation is:  v = r + d + p * v where v is the value, r is the reward, d is the discount, and p is the transition probability matrix. The Bellman equation is very important because it breaks a big problem into “bite-sized” sub problems that we are capable of solving.</p>
 
-<h1>Into Markov Chains</h1>
 <p>
 The concept of Reinforcement Learning is thankfully not complicated at all. In my last post, I was wondering how I was going to implement a reward process for my agent. 
 David Silver’s second Reinforcement Learning lecture answered that.
@@ -88,7 +85,6 @@ My state diagram starts from sleeping and it goes on from there. Every outgoing 
 
 <p>The next step is figuring out how to model the reward process using Markov Chains.</p>
 
-<h1>Into The Methods of Solving a Markov Decision Process</h1>
 <p>
 There are three methods of solving a Markov Decision process, these methods are, Dynamic Programming, Monte Carlo, and Temporal Difference Learning.</p>
 
@@ -101,11 +97,10 @@ There are three methods of solving a Markov Decision process, these methods are,
 <p>The methods that solve a Markov Decision Process have the same steps. The first step is the policy evaluation that estimates the value function for a policy. The second step is finding the optimal policy, which is improving the policy when you have a value function. 
 </p>
 
-<p>References:</p>
+<h2>References:</h2>
 <p>Powell, Victor. "Markov Chains Explained Visually." Explained Visually. N.p., n.d. Web. 11 May 2016.</p>
 
 <p>Silver, David. "Markov Decision Processes." SpringerReference (n.d.): n. pag. 2015. Web. 5 May 2016. </p> 
-<p></p>Sutton, Richard S., and Andrew G. Barto. Reinforcement Learning: An Introduction. Cambridge, MA: MIT, 1998. Print. </p>
-
+<p>Sutton, Richard S., and Andrew G. Barto. Reinforcement Learning: An Introduction. Cambridge, MA: MIT, 1998. Print. </p>
 
 </p>
