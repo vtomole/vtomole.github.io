@@ -1,0 +1,152 @@
+---
+layout: post
+title: "Quantum scrambling and teleportation"
+date: 2019-06-08
+---
+ <section>
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+</script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+$\newcommand{\ket}{\left|{#1}\right\rangle}$
+$\newcommand\bra[1]{\langle{#1}}$
+$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$
+ 
+<p>Quantum information scrambling is when local information is thrown into a disorder throughout a quantum system. 
+    This phenomena is similar to quantum decoherence where the information in a system is lost to the environment.
+     Another way of viewing this incident is the qubits of the system entangle; and thus correlate to the qubits 
+     in the environment. The problem is that quantum dechorence happens naturally to quantum computers since qubits can’t 
+     be perfectly isolated from the environment. This makes an experiment that tests for quantum information scrambling 
+     difficult because it seems like there is no way to distinguish if a system dispersed it’s information
+      throughout itself or the environment without resorting to quantum state tomography; 
+      which is intractable as the size of the quantum system grows. Fortunately, there is another way to differentiate
+       between a quantum scrambled system and a quantum decohered one by means of quantum teleportation.</p>
+
+<p> <a href = "https://vtomole.github.io/blog/2018/11/23/basis">Quantum teleportation </a>
+    is the problem of Alice needing to transport her state to Bob using classical 
+    communication and an EPR pair shared by both parties. Unlike the standard quantum teleportation protocol where the 
+    fidelity of sending the unknown quantum state is 100%. The protocol talked about here is probabilistic. First, 
+    we define the many-body-system by creating 3 EPR pairs, then we apply $U$ to half of the system and $U^\dagger$ to the other
+    half where $U$ (a unitary that delocalizes all single qubit operators into three-qubit operators) performs the scrambling.
+    Since Alice's quantum state is fully scrambled in the system, Bob can sucessfully decode it by making a Bell measurement of any pair
+    of qubits. <p>
+
+<p>The quantum circuit and program that defines the many-body-system, Alice's state, the scrambling of Alice's state and 
+    it's decoding by Bob is displayed below. 
+    The success of this prototcol is usually around 50%.
+</p>
+<pre>
+0: ---X----------@----------@---H-------@---@-------------------
+                 |          |           |   |
+1: ---H-----@----|----------@---@---H---|---@---@---@---H---M---
+            |    |              |       |       |   |
+2: ---H----@|----@--------------@---H---@-------@---X---M-------
+           ||
+3: --------X|----@--------------@---H---@-------@---------------
+            |    |              |       |       |
+4: ---------X----|----------@---@---H---|---@---@---------------
+                 |          |           |   |
+5: ---H----@-----@----------@---H-------@---@-------------------
+           |
+6: --------X-----M('bob')---------------------------------------
+</pre>
+
+<pre class="prettyprint lang-python">
+"""To demonstrate quantum scrambling using teleportation without Grover search"""
+import numpy as np
+import cirq
+
+def bell_basis_measurement(first_qubit, second_qubit):
+    circuit = cirq.Circuit()
+    circuit.append([
+        cirq.CNOT(first_qubit, second_qubit),
+        cirq.H(first_qubit),
+        cirq.measure(first_qubit), 
+        cirq.measure(second_qubit),   
+    ])
+    return circuit
+
+def scrambling_circuit(q0, q1, q2, q3, q4, q5):
+    circuit = cirq.Circuit()
+    
+    circuit.append([
+        # Define U
+        cirq.CZ(q0, q2),
+        cirq.CZ(q0, q1),
+        cirq.CZ(q1, q2),
+        cirq.H(q0),
+        cirq.H(q1),
+        cirq.H(q2),
+        cirq.CZ(q0, q2),
+        cirq.CZ(q0, q1),
+        cirq.CZ(q1, q2),
+
+        # Define conjugate of U
+        cirq.CZ(q3, q5),
+        cirq.CZ(q4, q5),
+        cirq.CZ(q3, q4),
+        cirq.H(q3),
+        cirq.H(q4),
+        cirq.H(q5),
+        cirq.CZ(q3, q5),
+        cirq.CZ(q4, q5),
+        cirq.CZ(q3, q4),
+    ])
+
+    return circuit
+
+
+def scrambling_teleportation(circuit, qubits_to_measure):
+    """
+    Output exmple: Fidelity 48/100
+    """
+    repetitions = 100
+
+    # Prepare the state to be |1>   
+    circuit.append([
+        cirq.X(q0),
+    ])
+
+    # Defining many-body-system
+    circuit.append([
+        cirq.H(q1),
+        cirq.H(q2),
+        cirq.H(q5),
+        cirq.CNOT(q5, q6),
+        cirq.CNOT(q2, q3),
+        cirq.CNOT(q1, q4),    
+    ])
+
+    # Retrieving U and and conjugate of U on the subsystems
+    scrambling_unitary = scrambling_circuit(q0, q1, q2, q3, q4, q5)
+
+    circuit.append([
+        scrambling_unitary,
+        bell_basis_measurement(qubits_to_measure[0], qubits_to_measure[1]), 
+        cirq.measure(q6, key='bob')
+    ])
+   
+    results = cirq.Simulator().run(circuit, repetitions=repetitions)
+    bob_measurement = np.array(results.measurements['bob'][:, 0])
+    print("Fidelity {}/{}".format(sum(bob_measurement), repetitions))
+    
+   
+
+
+if __name__ == '__main__':
+    q0, q1, q2, q3, q4, q5, q6 = cirq.LineQubit.range(7)
+    circuit = cirq.Circuit()
+    # Any Bell Pair measurement should give the same fidelities (aound 50%)
+    scrambling_teleportation(circuit, qubits_to_measure=[q1, q2])
+    </pre>
+ <p> Discuss on <a href = "https://github.com/vtomole/vtomole.github.io/issues/16">Github</a></p>
+
+  <h2>Reference</h2>
+<ul>
+  <li><a href = "https://arxiv.org/abs/1806.02807">Verified Quantum Information Scrambling</a></li>
+  
+</ul>
+<section/>
