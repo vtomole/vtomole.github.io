@@ -5,8 +5,11 @@ title: Victory's Blog
 <h1>{{ page.title }}</h1>
 <ul class="posts">
 
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-  {% endfor %}
+
+<div class="div-col columns column-width" style="-moz-column-width: 10em; -webkit-column-width: 10em; column-width: 10em;">
+<ul><li><a href="/humanities" title="Humanities">Humanities</a></li>
+<li><a href="/science" title="Science">Science</a></li>
+</div>
+  
     
 </ul>

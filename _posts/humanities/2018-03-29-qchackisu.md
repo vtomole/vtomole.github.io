@@ -2,6 +2,7 @@
 layout: post
 title: "Quantum programming at Hack ISU"
 date: 2018-03-29
+categories: humanities
 ---
 
 **Introduction**

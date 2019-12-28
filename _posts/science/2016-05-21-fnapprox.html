@@ -2,6 +2,7 @@
 layout: post
 title: "Neural Networks and Function Approximations"
 date: 2016-06-06
+categories: science
 ---   
 <p>Convolution neural networks are mainly used for computer vision. These Convolution Neural Networks, or Convnets, makes it so you don’t have to use a lot of parameters to train your network. These networks can be thought of as volumes because images have a width, height and a number of channels which are RGB (red, blue, green) values. When you multiply the height width and the color channel, you get a volume.</p>
 <p>Professor Winston makes the general idea of convnets easy to understand, He says that to be able to train a neural network on an image using a convnet, you run a neuron on a small part of the image. You then run this neuron on another small part of the image and you keep doing this until you have run the neuron on every pixel in the image. The output of this neuron is composed of a specific place in the image. This is the convolution of the image. The convolution of this image is composed of a couple of points. You take the local maximum of these values and construct another image with these values. You then slide over the neuron of the image that you just created and do the same process that you did for the original image and get other points/values. This process is called max pooling because you are taking the maximum of the local points in the image. Min pooling is doing the opposite, where you take the local minimum of the values in the image.</p>

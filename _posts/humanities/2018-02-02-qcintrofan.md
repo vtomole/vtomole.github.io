@@ -2,6 +2,7 @@
 layout: post
 title: "My 15 minute presentation on Quantum computing"
 date: 2018-02-2
+categories: humanities
 ---
 I did an [Introduction to Quantum Computing] talk for the Friday Activities at Noon (FAN) Club today. I feel like I covered important concepts on how quantum computers work and how they are built.
 
