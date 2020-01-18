@@ -1,6 +1,0 @@
-
-
-Constructor theory and topological quantum computation
-
-A quantum computer samples bitstring from a probability distribution x in {0, 1}  and p_u |<x | U| 0^n> |^2. Due to Seth Lloyd, apparenttly, QAOA is universal for quantum computation.
-That means we can implement a universal quantum simulator based on QAOA. Since it's one-dimmensional, it cannot perform fault tolerant quantum computation. Let's try to make it two dimmensional.
