@@ -24,7 +24,7 @@ $\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$
 
 <p>Suppose we want to simulate $H = X_{0} + Y_{1} + Z_{2}$ where X, Y and Z are Pauli matrices and the subscripts label the qubits that the hamiltonians apply to. We can't simulate each Hamiltonian separately because they don't commute. This is why we use Trotterization where we evolve the whole hamiltonian by repeatedly switching between evolving $X_{0}$, $Y_{1}$, and $Z_{2}$ each for a small period of time. The first step in deriving the circuit that will simulate this hamiltonian is finding the quantum gates that implement each of it's individual term. This case is simple since the quantum gates $R_{x}(\theta) = e^{-i \dfrac{\theta}{2}X}$, $R_{y}(\theta) = e^{-i \dfrac{\theta}{2}Y}$, $R_{z}(\theta) = e^{-i \dfrac{\theta}{2}Z}$ will implement the individual terms perfectly. $\theta$ specifies the angle by which to rotate the state in a specified axis; this is sort of synonymous with time since it specifies how "long" to apply the hamiltonian to the qubit ($\pi/2$ degrees could take 30 nanoseconds to rotate to, $\pi$ degress could take 60 nanoseconds, e.t.c). Since we don't care too much about the simulation error in this example, we will use $r = 2$ and $t=1$ in our Trotter formula to get $e^{X_{0} + Y_{1} + Z_{2}} = (e^{-iX_{0}} * e^{-iY_{1}} * e^{-iZ_{2}}) * (e^{-iX_{0}/2} * e^{-iY_{1}/2} * e^{-iZ_{2}/2}) $   <p>
 
- <p> Discuss on <a href = "https://github.com/vtomole/vtomole.github.io/issues/1">Github</a></p>
+ <p> Discuss on <a href = "https://www.reddit.com/user/vtomole/comments/ff0iwj/hamiltonian_simulation_and_trotterization/">Reddit</a>.</p>
 
   <h2>References</h2>
 <ul>
