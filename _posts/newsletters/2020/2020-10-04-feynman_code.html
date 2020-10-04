@@ -1,0 +1,47 @@
+---
+layout: post
+title: "Feynman Simulation implementation"
+date: 2020-10-04
+categories: twentytwentynewsletters
+---
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+$\newcommand{\ket}[1]{\left|{#1}\right\rangle}$
+$\newcommand\bra[1]{\langle{#1}|}$
+$\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$
+
+
+<p>Building off of last week's newsletter on <a href="https://vtomole.com/blog/2020/09/22/feynman">Feynman vs Schrödinger simulators</a>, 
+    here is an implementation of Feynman's simulation algorithm: <a href=" https://github.com/vtomole/Kite/blob/master/kite/feynman.py">feynman.py</a>. 
+    It only works for one and two qubit gates for now. To run it, you clone the repository and install the library.
+</p>
+<pre class="prettyprint lang-bash">
+    $ git clone https://github.com/vtomole/Kite.git
+    $ cd Kite
+    $ pip install e .
+</pre>
+
+
+<pre class="prettyprint lang-python">
+    import kite as kt
+
+    def main():
+        "To demonstrate the implementation and equivalence of results of the Schrodinger and Feynman simulators"
+        prog = kt.Program(
+            kt.QREG(2, probability_of_amplitude='00'),
+            kt.H(0),
+            kt.CNOT(0,1))
+    
+        amplitude_from_schrodinger = kt.schrodinger(prog)
+        print("Amplitude from Schrodinger")
+        print(amplitude_from_schrodinger )
+    
+        amplitude_from_feynman = kt.feynman(prog)
+        print("Amplitude from Feynman")
+        print(amplitude_from_feynman)
+        
+        assert amplitude_from_schrodinger == amplitude_from_feynman
+    
+    if __name__ == '__main__':
+        main()
+    </pre>
