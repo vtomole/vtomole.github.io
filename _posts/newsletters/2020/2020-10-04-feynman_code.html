@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Feynman Simulation implementation"
+title: "Feynman vs Schrödinger simulators"
 date: 2020-10-04
 categories: twentytwentynewsletters
 ---
@@ -10,9 +10,23 @@ $\newcommand{\ket}[1]{\left|{#1}\right\rangle}$
 $\newcommand\bra[1]{\langle{#1}|}$
 $\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$
 
+<p> The two basic simulation algorithms: Schrödinger's state-vector algorithm and Feynman's path algorithm have their pros and cons. While Schrödinger's takes
+    less time to run compared to Feynman's, it takes more space. Feynman's tradeoff is the opposite of Schrödinger's: Feynman's takes more time and less space.
+    More precicely, Schrödinger's takes  $~ m^{2n}$ time and $∼2^{n}$ space while Feynman's takes $~4^{m}$ time and $∼m+n$ space; where $n$ in the number of qubits
+and $m$ is the number of gates.</p>
 
-<p>Building off of last week's newsletter on <a href="https://vtomole.com/blog/2020/09/22/feynman">Feynman vs Schrödinger simulators</a>, 
-    here is an implementation of Feynman's simulation algorithm: <a href=" https://github.com/vtomole/Kite/blob/master/kite/feynman.py">feynman.py</a>. 
+    <p>An $n$ qubit quantum computer takes in a quantum circuit $U$ that contains $m$ gates and an input state $\ket{0}^n$. It then outputs a string of bits $x  \in \{0, 1\} ^n$ with probability 
+        $P(x_{m}) = |\bra{x_{m}}U\ket{0}^n|^2 $. In  Schrödinger's algorithm $P(x_{m}) = |\bra{x_{m}}U_{m} U_{m-1} U_{m-2} U_{m-3}, ..., U_{1}\ket{0}^n|^2$; the state is kept track of
+    for the entire computation. Contrasted with Feynman's algorithm,
+    $P(x_{m}) = |\bra{x_{m}}U\ket{0}^n|^2 = |\sum_{x_{1}, x_{2}, x_{3}, ... ,x_{m-1} \in \{0, 1\}^n}  \prod_{j=1}^{m} \bra{x_j}U_{j}\ket{x_{j-1}}|^2$</p>
+
+<p>Feynman's algorithm saves space because it calculates an amplitude instead of keeping track of the state vector. Not being able
+    to inspect a state vector for debugging purposes is a disadvantage of Feynman's algorithm.
+    </p>
+
+
+<p>
+    Here is an implementation of Feynman's simulation algorithm: <a href=" https://github.com/vtomole/Kite/blob/master/kite/feynman.py">feynman.py</a>. 
     It only works for one and two qubit gates for now. To run it, clone the repository and install the library.
 </p>
 <pre class="prettyprint lang-bash">
@@ -45,3 +59,11 @@ $\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$
     if __name__ == '__main__':
         main()
     </pre>
+
+
+
+    <h2>References</h2>
+    <ul>
+        <li><a href = "https://arxiv.org/abs/1612.05903">Complexity-Theoretic Foundations of Quantum Supremacy Experiments</a></li>
+        <li><a href = "https://arxiv.org/abs/1803.04402">Quantum Supremacy and the Complexity of Random Circuit Sampling</a></li>
+     </ul>
