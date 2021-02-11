@@ -1,0 +1,345 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdftex 2019.11.2)  2 JAN 2021 15:49
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**resume.tex
+(./resume.tex
+! Undefined control sequence.
+l.7 \documentclass
+                  [letterpaper,11pt]{article}
+? 
+! Undefined control sequence.
+l.9 \usepackage
+               {latexsym}
+? 
+! Undefined control sequence.
+l.10 \usepackage
+                [empty]{fullpage}
+? 
+! Undefined control sequence.
+l.11 \usepackage
+                {titlesec}
+? 
+! Undefined control sequence.
+l.12 \usepackage
+                {marvosym}
+? 
+! Undefined control sequence.
+l.13 \usepackage
+                [usenames,dvipsnames]{color}
+? 
+! Undefined control sequence.
+l.14 \usepackage
+                {verbatim}
+? 
+! Undefined control sequence.
+l.15 \usepackage
+                {enumitem}
+? 
+! Interruption.
+<to be read again> 
+                   {
+l.15 \usepackage{
+                 enumitem}
+? 
+! Undefined control sequence.
+l.16 \usepackage
+                [pdftex]{hyperref}
+? 
+! Undefined control sequence.
+l.17 \usepackage
+                {fancyhdr}
+? 
+
+Overfull \hbox (19.94048pt too wide) in paragraph at lines 9--18
+[]\tenrm latexsym [empty]fullpage ti-tlesec mar-vosym [use-names,dvipsnames]col
+or ver-ba-tim en-u-mitem [pdf-tex]hyperref|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm l
+.\tenrm a
+.\tenrm t
+.\tenrm e
+.etc.
+
+! Undefined control sequence.
+l.20 \pagestyle
+               {fancy}
+? 
+! Undefined control sequence.
+l.21 \fancyhf
+             {} % clear all header and footer fields
+? 
+! Undefined control sequence.
+l.22 \fancyfoot
+               {}
+? 
+! Undefined control sequence.
+l.23 \renewcommand
+                  {\headrulewidth}{0pt}
+? 
+! Undefined control sequence.
+l.23 \renewcommand{\headrulewidth
+                                 }{0pt}
+? 
+! Undefined control sequence.
+l.24 \renewcommand
+                  {\footrulewidth}{0pt}
+? 
+! Undefined control sequence.
+l.24 \renewcommand{\footrulewidth
+                                 }{0pt}
+? 
+! Undefined control sequence.
+l.27 \addtolength
+                 {\oddsidemargin}{-0.375in}
+? 
+! Undefined control sequence.
+l.27 \addtolength{\oddsidemargin
+                                }{-0.375in}
+? 
+! Undefined control sequence.
+l.28 \addtolength
+                 {\evensidemargin}{-0.375in}
+? 
+! Undefined control sequence.
+l.28 \addtolength{\evensidemargin
+                                 }{-0.375in}
+? 
+! Undefined control sequence.
+l.29 \addtolength
+                 {\textwidth}{1in}
+? 
+! Undefined control sequence.
+l.29 \addtolength{\textwidth
+                            }{1in}
+? 
+! Undefined control sequence.
+l.30 \addtolength
+                 {\topmargin}{-.5in}
+? 
+! Undefined control sequence.
+l.30 \addtolength{\topmargin
+                            }{-.5in}
+? 
+! Undefined control sequence.
+l.31 \addtolength
+                 {\textheight}{1.0in}
+? 
+! Undefined control sequence.
+l.31 \addtolength{\textheight
+                             }{1.0in}
+? 
+! Undefined control sequence.
+l.33 \urlstyle
+              {same}
+? 
+! Undefined control sequence.
+l.37 \setlength
+               {\tabcolsep}{0in}
+? 
+! Undefined control sequence.
+l.37 \setlength{\tabcolsep
+                          }{0in}
+? 
+! Undefined control sequence.
+l.40 \titleformat
+                 {\section}{
+? 
+! Undefined control sequence.
+l.40 \titleformat{\section
+                          }{
+? 
+! Undefined control sequence.
+l.41   \vspace
+              {-4pt}\scshape\raggedright\large
+? 
+! Undefined control sequence.
+l.41   \vspace{-4pt}\scshape
+                            \raggedright\large
+? 
+! Undefined control sequence.
+l.41   \vspace{-4pt}\scshape\raggedright\large
+                                              
+? 
+! Undefined control sequence.
+l.42 }{}{0em}{}[\color
+                      {black}\titlerule \vspace{-5pt}]
+? 
+! Undefined control sequence.
+l.42 }{}{0em}{}[\color{black}\titlerule
+                                        \vspace{-5pt}]
+? 
+! Undefined control sequence.
+l.42 }{}{0em}{}[\color{black}\titlerule \vspace
+                                               {-5pt}]
+? 
+! Undefined control sequence.
+l.46 \newcommand
+                {\resumeItem}[2]{
+? 
+! Undefined control sequence.
+l.46 \newcommand{\resumeItem
+                            }[2]{
+? 
+! Undefined control sequence.
+<argument> \small 
+                  \enspace 
+\llap #1->\hbox to\z@ {\hss #1
+                              }
+\textindent #1->\indent \llap {#1\enspace }
+                                           \ignorespaces 
+l.47   \item\small
+                  {
+? 
+! Undefined control sequence.
+l.48     \textbf
+                {#1}{: #2 \vspace{-2pt}}
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.48     \textbf{#
+                  1}{: #2 \vspace{-2pt}}
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.48     \textbf{#1}{: #
+                        2 \vspace{-2pt}}
+? 
+! Undefined control sequence.
+l.48     \textbf{#1}{: #2 \vspace
+                                 {-2pt}}
+? 
+! Undefined control sequence.
+l.52 \newcommand
+                {\resumeSubheading}[4]{
+? 
+! Undefined control sequence.
+l.52 \newcommand{\resumeSubheading
+                                  }[4]{
+? 
+! Undefined control sequence.
+l.53   \vspace
+              {-1pt}\item
+? 
+! Undefined control sequence.
+<argument> \begin 
+                  \enspace 
+\llap #1->\hbox to\z@ {\hss #1
+                              }
+\textindent #1->\indent \llap {#1\enspace }
+                                           \ignorespaces 
+l.54     \begin
+               {tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+? 
+! Undefined control sequence.
+l.54     \begin{tabular*}{0.97\textwidth
+                                        }{l@{\extracolsep{\fill}}r}
+? 
+! Undefined control sequence.
+l.54 ...{tabular*}{0.97\textwidth}{l@{\extracolsep
+                                                  {\fill}}r}
+? 
+! Undefined control sequence.
+l.54 ...ar*}{0.97\textwidth}{l@{\extracolsep{\fill
+                                                  }}r}
+? 
+! Undefined control sequence.
+l.55       \textbf
+                  {#1} & #2 \\
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.55       \textbf{#
+                    1} & #2 \\
+? 
+! Misplaced alignment tab character &.
+l.55       \textbf{#1} &
+                         #2 \\
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.55       \textbf{#1} & #
+                          2 \\
+? 
+! Argument of \\ has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.58 }
+      
+? 
+Runaway argument?
+ \textit {\small ##3} & \textit {\small ##4} \\ \end {tabular*}\vspace \ETC.
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.58 }
+      
+? 
+! Undefined control sequence.
+l.60 \newcommand
+                {\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+? 
+! Undefined control sequence.
+l.60 \newcommand{\resumeSubItem
+                               }[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+? 
+! Undefined control sequence.
+l.60 \newcommand{\resumeSubItem}[2]{\resumeItem
+                                               {#1}{#2}\vspace{-4pt}}
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.60 \newcommand{\resumeSubItem}[2]{\resumeItem{#
+                                                 1}{#2}\vspace{-4pt}}
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.60 ...mmand{\resumeSubItem}[2]{\resumeItem{#1}{#
+                                                  2}\vspace{-4pt}}
+? 
+! Undefined control sequence.
+l.60 ...sumeSubItem}[2]{\resumeItem{#1}{#2}\vspace
+                                                  {-4pt}}
+? 
+! Undefined control sequence.
+l.62 \renewcommand
+                  {\labelitemii}{$\circ$}
+? 
+! Undefined control sequence.
+l.62 \renewcommand{\labelitemii
+                               }{$\circ$}
+? 
+! Undefined control sequence.
+l.64 \newcommand
+                {\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+? 
+! Undefined control sequence.
+l.64 \newcommand{\resumeSubHeadingListStart
+                                           }{\begin{itemize}[leftmargin=*]}
+? 
+! Undefined control sequence.
+l.64 ...command{\resumeSubHeadingListStart}{\begin
+                                                  {itemize}[leftmargin=*]}
+? 
+! Undefined control sequence.
+l.65 \newcommand
+                {\resumeSubHeadingListEnd}{\end{itemize}}
+? 
+! Undefined control sequence.
+l.65 \newcommand{\resumeSubHeadingListEnd
+                                         }{\end{itemize}}
+? 
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 65 ({)
+### bottom level</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb>
+Output written on resume.pdf (1 page, 25367 bytes).
+PDF statistics:
+ 16 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
