@@ -68,35 +68,3 @@ and $m$ is the number of gates.</p>
         <li><a href = "https://arxiv.org/abs/1803.04402">Quantum Supremacy and the Complexity of Random Circuit Sampling</a></li>
      </ul>
 
-     '''Feynman's simulation algorithm''' (also referred to as '''Feynman's algorithm''') is an [[algorithm]] that's used to simulate the operations of a [[quantum computer]] on a [[Computer| classical computer]]. It's based on the [[Path integral formulation | Path integral formulation of quantum mechanics]]; which was formulated by the eponymous [[Richard Feynman]]. <ref name="WH02">
-        {{Cite journal | arxiv=quant-ph/0211140 |last1=Dam |first1=Wim van |last2=Hallgren |first2=Sean |last3=Ip |first3=Lawrence |title =Quantum Algorithms for some Hidden Shift Problems|year =2002 |journal=[[Society for Industrial and Applied Mathematics]] |volume=36 |pages=763-778 |doi=10.1137/S009753970343141X}}</ref>
-        ==Overview==
-        An <math>n</math> qubit quantum computer takes in a [[quantum circuit]] <math>U</math> that contains <math>m</math> gates and an input state <math>|0\rangle^n</math>. It then outputs a string of bits <math>x  \in \{0, 1\} ^n</math> with probability <math>P(x_{m}) = |\langle x_{m}|U|0\rangle^n|^2 </math>. 
-        
-        In Schrödinger's state-vector algorithm, <math>P(x_{m})</math> is calculated straightforwardly [[Matrix multiplication]]. That is, <math>P(x_{m}) = |\langle x_{m}|U_{m} U_{m-1} U_{m-2} U_{m-3}, ..., U_{1}|0\rangle^n|^2</math>. The quantum state of the system can be tracked throughout it's evolution.
-        
-        In Feynman's path algorithm, <math>P(x_{m})</math> is calculated by summing up the contributions of <math>(2^{n})^{m-1}</math> histories. That is, <math>P(x_{m}) = |\langle x_{m}|U|0\rangle^n|^2 = |\sum_{x_{1}, x_{2}, x_{3}, ... ,x_{m-1} \in \{0, 1\}^n}  \prod_{j=1}^{m} \langle x_j|U_{j}|x_{j-1}\rangle|^2</math>. <ref>{{Cite journal | arxiv=quant-ph/0607151 |last1=Dam |first1=Wim van |last2=Hallgren |first2=Sean |last3=Ip |first3=Lawrence |title =The sum-over-histories formulation of quantum computing|year =2006 |journal=[[Society for Industrial and Applied Mathematics]] |volume=36 |pages=763-778 |doi=10.1137/S009753970343141X}}</ref>
-        
-        Schrödinger's takes less time to run compared to Feynman's while Feynman's takes more time and less space.
-        More precisely, Schrödinger's takes  <math>\sim m^{2n}</math> time and <math>\sim 2^{n}</math> space while Feynman's takes <math>\sim 4^{m}</math> time and <math>\sim m+n</math> space.
-        ==Example==
-        Consider the problem of creating a [[Bell_state#Creating_Bell_states| Bell state]]. What is the probability that the resulting measurement will be <math>00</math>? 
-        
-        Since the unitary for this circuit is <math> (H \otimes I) \times CNOT</math>, <math>P(00) = |\langle 00|(H \otimes I) \times CNOT|00\rangle|^2 = \frac{1}{2}</math> in Schrödinger's algorithm; so probability is <math>\frac{1}{2}</math>.
-        
-        In Feynman's, the Bell state circuit contains <math>(2^{2})^{2-1} = 4</math> histories: <math>00, 01, 10, 11</math> . So <math>|\sum_{00, 01, 10, 11}  \prod_{j=1}^{2} \langle x_j|U_{j}|x_{j-1}\rangle|^2</math> = |<math> \langle 00| H \otimes I|00\rangle \times \langle 00| CNOT|00\rangle</math> + <math> \langle 01| H \otimes I|00\rangle \times \langle 00| CNOT|01\rangle</math> + <math> \langle 10| H \otimes I|00\rangle \times \langle 00| CNOT|10\rangle</math> + <math> \langle 11| H \otimes I|00\rangle \times \langle 00| CNOT|11\rangle|^2 = |\frac{1}{\sqrt{2}} + 0 + 0 + 0|^2 = \frac{1}{2}</math>.
-        == See also ==@article{Raedt2007MassivelyPQ,
-            title={Massively parallel quantum computer simulator},
-            author={K. D. Raedt and K. Michielsen and H. D. Raedt and B. Trieu and G. Arnold and M. Richter and T. Lippert and H. Watanabe and Nobuyasu Ito},
-            journal={Comput. Phys. Commun.},
-            year={2007},
-            volume={176},
-            pages={121-136}
-          }
-        * [[Hamiltonian simulation]]
-        * [[Quantum simulation]]
-        ==References==
-        {{reflist}}
-        
-        [[Category:Quantum algorithms]]
-        
