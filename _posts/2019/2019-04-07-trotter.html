@@ -22,11 +22,11 @@ $\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$
 <p> Hamiltonians are hermitian operators that are usually a sum of a large number of individual hamiltonians $H_{j}$. For example, a Hamiltonian $H$ can be equal to $ H_{1} + H_{2}$. This sum of 2 hamiltonians can be described by the Lie product formula: $e^{-i(H_1+H_2)t} = \lim_{N \rightarrow \infty} (e^{-iH_1t/N}e^{-iH_2t/N})^N$. Since the limit of this formula is infinite, we have to truncate the series when implementing this formula on a quantum computer. The truncation introduces error in the simulation that we can bound by a maximum simulation error $\epsilon$ such that $\norm{ e^{-i H t} - U} \leq \epsilon$. This truncation is known as Trotterization and it's widely used to simulate non-commuting hamiltonians on quantum computers. The Trotterization formula is then $e^{-iHt} = (e^{-iH_{0}t/r} * e^{-iH_{1}t/r ....* e^{-iH_{d-1}}t/r })^r$ + $0$(some polynomial factors).</p>
 
 
-  <p>Suppose we want to simulate $H = X_{0} + Z_{1}$ where X and Z are Pauli matrices and the 
+  <p>Suppose we want to simulate $H = X_{0} + Z_{0}$ where X and Z are Pauli matrices and the 
     subscripts label the qubits that the hamiltonians apply to. 
     We can't simulate each Hamiltonian separately because X and Z Paulis don't commute. 
     This is why we use Trotterization where we evolve the whole hamiltonian by 
-    repeatedly switching between evolving $X_{0}$ and $Z_{1}$ each for a small period of time. 
+    repeatedly switching between evolving $X_{0}$ and $Z_{0}$ each for a small period of time. 
     The first step in deriving the circuit that will simulate this hamiltonian is finding the
      quantum gates that implement each of it's individual term. 
      This case is simple since the quantum gates $R_{x}(\theta) = e^{-i \dfrac{\theta}{2}X}$ and 
@@ -37,7 +37,7 @@ $\newcommand{\norm}[1]{\left\lVert#1\right\rVert}$
      could take 60 nanoseconds, e.t.c). 
      Since we don't care too much about the simulation error in this example, 
      we will use $r = 2$ and $t=1$ in our Trotter formula to get 
-     $e^{X_{0} + Z_{1}} = (e^{-iX_{0}} * e^{-iZ_{1}}) * (e^{-iX_{0}/2} * e^{-iZ_{1}/2}) $.    <p>
+     $e^{X_{0} + Z_{0}} = (e^{-iX_{0}} * e^{-iZ_{0}}) * (e^{-iX_{0}/2} * e^{-iZ_{0}/2}) $.    <p>
  <p> Discuss on <a href = "https://www.reddit.com/user/vtomole/comments/ff0iwj/hamiltonian_simulation_and_trotterization/">Reddit</a>.</p>
 
   <h2>References</h2>
