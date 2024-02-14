@@ -7,6 +7,15 @@ title: Victory's Blog
 My calling is to contribute to the world-wide effort of building a large-scale quantum computer. The best way to reach me is via email: vtomole2@gmail.com.</p>
 
 
+
+<h2>2024</h2>
+<ul class="posts">
+
+	{% for humanity in site.categories.twentytwentyfour %}
+	  <li><span>{{ humanity.date | date_to_string }}</span> &raquo; <a href="{{ humanity.url }}" title="{{ humanity.title }}">{{ humanity.title }}</a></li>
+	{% endfor %}
+
+</ul>
 <h2>2023</h2>
 <ul class="posts">
 
