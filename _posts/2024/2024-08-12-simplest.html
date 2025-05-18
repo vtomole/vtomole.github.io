@@ -1,0 +1,50 @@
+---
+layout: post
+title: "The Simplest Quantum computer"
+date: 2024-02-13
+categories: twentytwentyfour
+---
+
+
+<p>
+    Charles Tran recently wrote a though provoking piece on wha a future quantum computer would be. It's very thought provoink in suggesting that future quantum computers will be measurement based. 
+    If we are judging a quantum computer's simplicity based on the number of active operations it does, the it sufficies to say that the simplest quantum computer is one that does not do any operations at all.
+    The simplest quantum computer is not in fact one that only uses measurements, but one that is completely passive. That is, a quantum computer where you load the input state and the program, wait, and then measure the output. 
+</p>
+
+
+   <p> Such computers do exist! in fact, they were some of the first proposals of quantum computers such us from Paul Benioff and Feynman. For Feynman's quantum computer, it's one where the quantum computer is one where a system implements a hamiltonian. H with creation and annilation operators.    
+        <pre class="prettyprint lang-python">
+            import kite as kt
+        
+            def main():
+                "To demonstrate the implementation and equivalence of results of the Schrodinger and Feynman simulators"
+                prog = kt.Program(
+                    kt.QREG(2, probability_of_amplitude='00'),
+                    kt.H(0),
+                    kt.CNOT(0,1))
+            
+                amplitude_from_schrodinger = kt.schrodinger(prog)
+                print("Amplitude from Schrodinger")
+                print(amplitude_from_schrodinger )
+            
+                amplitude_from_feynman = kt.feynman(prog)
+                print("Amplitude from Feynman")
+                print(amplitude_from_feynman)
+                
+                assert amplitude_from_schrodinger == amplitude_from_feynman
+            
+            if __name__ == '__main__':
+                main()
+            </pre>
+</p>
+    
+    
+    <p>Feynman left the  problem of running error correcting codes on said computer as an open problem. Standard QEC protocols where syndromes are measured destroys 
+        the passiveness of the computer. but it can be easily addressed by measurement-free quantum error correction. In measurement-free error correction
+        you measure and detect errors coherently using a continous supply of qubits. MFQEC with reset operations will not work either because these resets are also actively involved with the computation.
+        The eequivalent of what Feynman's computer calls for is one whose dynamics are completely unitary. 
+        Non unitary operation are not allowe as input to this computer. This means that Magic state distillation won't do and we'll have to concatenate tranversal gates to get a universal gateset </p>
+
+
+
