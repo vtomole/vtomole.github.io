@@ -28,7 +28,4 @@ Empedocles noticed the final cause. He was the first to assert that, for example
 
 In arguing that previous thinkers did not fully grasp the four causes, Aristotle presents Empedocles as an example. Empedocles said that the essence and substance of a thing is its ratio, but he does not reconcile this claim with his other claim that the first principles are fire, earth, water, and air. He is grasping at the formal cause, but he does not articulate it clearly.
 
-
-
-
 Discuss on [Github](https://github.com/vtomole/vtomole.github.io/discussions/134)
