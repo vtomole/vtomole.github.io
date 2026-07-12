@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-bundle exec jekyll serve
+set -euo pipefail
+
+if [[ "${CI:-false}" == "true" ]]; then
+  bundle exec jekyll build
+else
+  bundle exec jekyll serve --force_polling
+fi
