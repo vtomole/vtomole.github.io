@@ -1,20 +1,21 @@
 ---
 layout: post
-title: "First read: Aristotle's Physics"
+title: "Aristotle"
 date: 2026-02-28
 categories: twentytwentysix
 ---
-## Table of Contents
-- [Book I](#book-i)
-- [Book II](#book-ii)
-- [Book III](#book-iii)
-- [Book IV](#book-iv)
-- [Book V](#book-v)
 
-## Book I
-At the end of [Book I of Aristotle’s Physics](https://classics.mit.edu/Aristotle/physics.1.i.html), he claims that he has sufficiently argued that there are principles, that he has shown what those principles are, and that he has determined how many of them there are. Why should we care about principles? Because principles are the doors to scientific knowledge. Aristotle draws on his predecessors, who all agree that contraries are principles. Examples of contraries include excess and defect, above and below, before and behind, angular and angle-less, straight and round, and so forth. If contraries come in pairs and contraries are principles, then in the abstract, there are 2 principles. As we observe things in our world, we notice that their properties tend to change between the contraries. Things change from hot to cold, wet to dry, e.t.c and vice versa. The things in which the contraries display their properties and which persist through the change is called the substratum, which is the third principle. 
+- [Physics](#physics)
+- [Metaphysics](#metaphysics)
 
-## Book II
+## Physics
+
+### Book I
+
+At the end of [Book I of Aristotle’s Physics](https://classics.mit.edu/Aristotle/physics.1.i.html), he claims that he has sufficiently argued that there are principles, that he has shown what those principles are, and that he has determined how many of them there are. Why should we care about principles? Because principles are the doors to scientific knowledge. Aristotle draws on his predecessors, who all agree that contraries are principles. Examples of contraries include excess and defect, above and below, before and behind, angular and angle-less, straight and round, and so forth. If contraries come in pairs and contraries are principles, then in the abstract, there are 2 principles. As we observe things in our world, we notice that their properties tend to change between the contraries. Things change from hot to cold, wet to dry, e.t.c and vice versa. The things in which the contraries display their properties and which persist through the change is called the substratum, which is the third principle.
+
+### Book II
+
 [Book II](https://classics.mit.edu/Aristotle/physics.2.ii.html) gives an account of the primary causes. What is a cause? It is that from which a thing comes to be and that from which it persists. In a single paragraph Aristotle summarizes all of them:
 
 "All the causes now mentioned fall into four familiar divisions. The letters are the causes of syllables, the material of artificial products, fire, &c., of bodies, the parts of the whole, and the premises of the conclusion, in the sense of 'that from which'. Of these pairs the one set are causes in the sense of substratum, e.g. the parts, the other set in the sense of essence-the whole and the combination and the form. But the seed and the doctor and the adviser, and generally the maker, are all sources whence the change or stationariness originates, while the others are causes in the sense of the end or the good of the rest; for 'that for the sake of which' means what is best and the end of the things that lead up to it. (Whether we say the 'good itself' or the 'apparent good' makes no difference.)"
@@ -22,7 +23,8 @@ At the end of [Book I of Aristotle’s Physics](https://classics.mit.edu/Aristot
 The first set of causes; the ones that define the letters of syllables, the material of artificial products, the parts of the whole, etc.; are those that Aristotle describes as "that from which." In general, these correspond to form and matter, where matter, for example, the substratum, which we discovered in Book I to be a principle, is also a cause.
 The third cause comes from "all sources whence change and stationariness originate"; this is the efficient cause. The "that for the sake of which" is called the final cause.
 
-## Book III
+### Book III
+
 In [Book III](https://classics.mit.edu/Aristotle/physics.3.iii.html), we defined nature as a principle of motion. Since nature is a principle of motion, we cannot understand nature before we understand motion. Since motion is continuous, and the infinite presents itself in the continuous, we must understand the infinite first and foremost. We must understand the way in which the infinite exists, the way in which it does not exist, and what it is. Since motion is concerned with bodies, we ask: does an infinite body exist? A proof that an infinite body does not exist goes as follows:
 
 - The definition of a body is "bounded by a surface."
@@ -31,7 +33,8 @@ In [Book III](https://classics.mit.edu/Aristotle/physics.3.iii.html), we defined
 
 Now, given that an infinite body does not exist, that does not mean that the infinite does not exist in other ways. The infinite must exist because, if it did not, time would not be infinite.
 
-## Book IV
+### Book IV
+
 [Book IV](https://classics.mit.edu/Aristotle/physics.4.iv.html) addresses place, void, and time.
 
 Place cannot be a body because, if it were, there would be two bodies in the same place, which is impossible. Place is, in a sense, a home for the body, and bodies have their natural places: the place for fire is up, and the place for earth is down. Thus, these bodies tend to move up or down to their appropriate places. What is the cause of place? It cannot be matter or form, since form and matter are not separate from things, whereas place can be separated from things. For example, an empty cup is filled with air, but when water is poured into it, the air exits the cup, and the cup is then filled with water. The place that contained air now contains water, but it is still the same place, independent of what body occupies it.
@@ -40,14 +43,40 @@ While place exists, the void, on the other hand, does not. What is the void? The
 
 What about time? Does it exist? What is its nature? Previous thinkers thought that time is motion. They saw things around them moving and took that to be what time is. But motion is not time. Motion exists only in moving things, whereas time is everywhere, in moving things and in things at rest. Even though time is not motion, it is related to motion: if the state of our mind does not change (that is, if it is not in motion), we would not be aware of the passage of time. How is this relation perceived? Things in motion are described in terms of "before" and "after": before a body moved, it was located at X; after the body moved, it was located at Y. Time also has this distinction of "before" and "after" because it is related to movement. We are only qualified to claim that time has elapsed when we have sensed the "before" and "after" of a thing in motion. In "before" and "after", there are two "nows". "Now" the object is at X; then, after waiting for a period of time, we identify a second now: "now the object is at Y." The "nows" are what bound time. If there is only one "now", there is no time, because nothing has moved. Only when there is more than one "now" do we say there is time. So time is the number of motion in respect to "before" and "after".
 
-## Book V
+### Book V
 
-[Book V](https://classics.mit.edu/Aristotle/physics.5.v.html) goes back to thinking about motion proper. Motion is a kind of change, and there are three ways a thing can change. It can change accidentally, it can change when a part of the whole changes, and it can change in a third way, namely, when it is neither of the first two: when the thing itself is in motion, was not moved accidentally, and it is the whole thing rather than just a part of it. 
+[Book V](https://classics.mit.edu/Aristotle/physics.5.v.html) goes back to thinking about motion proper. Motion is a kind of change, and there are three ways a thing can change. It can change accidentally, it can change when a part of the whole changes, and it can change in a third way, namely, when it is neither of the first two: when the thing itself is in motion, was not moved accidentally, and it is the whole thing rather than just a part of it.
 
 Now, each of these three kinds of change might occur in the following ways: from thing to thing, from nothing to thing, from thing to nothing, and from nothing to nothing. But wait, does something changing from nothing to nothing count as a change? It does not, because we have defined change as belonging to a process that involves an opposition of contraries. The change from nothing to something we call "becoming" and the change from something to nothing we call "perishing". Perishing turns out not to be motion, since motion has for its contrary either another motion or rest, whereas "perishing" is the contrary of "becoming". Therefore, it is impossible for that which is not to be in motion. This being so, it follows that "becoming" cannot be a motion, for it is that which "is not" that "becomes". It then follows that only changing from subject to subject counts as motion. Motion is one kind of change, while becoming and perishing are also changes that are themselves not motion.
 
 Now that we have defined motion as something that belongs to contraries, we must provide examples. Motion appears to have two contraries in general. The first contrary is rest. The other contrary occurs when one motion goes from a contrary to its opposite, while another motion goes from that opposite back to the original contrary. For example, a motion from health to disease, coupled with a motion from disease to health, are contrary motions; while a motion from health and a motion to health are not contrary motions. Neither is a motion from health and a motion from disease, nor a motion to health and a motion to disease, nor a motion from health and a motion to disease.
 
+## Metaphysics
 
-Discuss on [Github](https://github.com/vtomole/vtomole.github.io/discussions/123)
+### Book I
 
+Book 1 of [Aristotle’s Metaphysics](https://classics.mit.edu/Aristotle/metaphysics.1.i.html) provides a survey of the history of philosophy, advancing the thesis that previous thinkers discovered the four causes, albeit somewhat obscurely.
+
+What causes did the ancient philosophers recognize?
+
+- Thales: The first principle is water.
+- Anaximenes and Diogenes: The first principle is air.
+- Hippasus and Heraclitus: The first principle is fire.
+- Empedocles: The first principles are fire, water, air, and earth.
+- Anaxagoras: The first principles are infinite.
+
+All of these principles are material, so, at a minimum, these thinkers recognized material causes.
+
+Hesiod recognized that among existing things there must be a cause that moves things and brings them together. Hence, Hesiod recognized the efficient cause.
+
+The Pythagoreans implicitly noticed the formal cause: they thought that number was the substance of all things. Things can change, but numbers would still be the underlying essence of objects. Unlike the proponents of material causes, the Pythagoreans were able to explain justice, the soul, reason, opportunity, and other things through modifications of numbers. They found that the modification of numbers gives form to things.
+
+Empedocles noticed the final cause. He was the first to assert that, for example, friendship is the cause of good things, and thus to suggest that the good is a cause.
+
+In arguing that previous thinkers did not fully grasp the four causes, Aristotle presents Empedocles as an example. Empedocles said that the essence and substance of a thing is its ratio, but he does not reconcile this claim with his other claim that the first principles are fire, earth, water, and air. He is grasping at the formal cause, but he does not articulate it clearly.
+
+# Book 2
+
+Aristotle admits that there must be some common ground between arguers for them to make progress in an argument.  If the arguers don’t share a common ground, they would be talking past each other, and even worse, they would be unintelligible to each other.  That’s why it’s best to learn how to argue in a variety of ways. One needs to know how to argue mathematically, poetically, and concretely and to learn all these ways first before even attempting to get into the arguments because it’s very hard to learn to absorb every which way of arguing while being productive in the arguments. When it comes to mathematical arguments, they shouldn’t be applied to arguments about nature because, since nature is made of matter and mathematics has no matter then the method of studying natural science should not go by the way of mathematics, Aristotle is implicitly making a differentiation between A prioriori and a  knowdleged where with the mathematical arguments being a priporis and the arguments about nature, poet citations and concrete arguments coming from a postpriori knowledge. 
+
+Discuss on [Github](https://github.com/vtomole/vtomole.github.io/discussions/134)
