@@ -81,4 +81,16 @@ Aristotle admits that there must be some common ground between arguers for them 
 
 When it comes to mathematical arguments, they shouldn’t be applied to arguments about nature because, since nature is made of matter and mathematics has no matter, then the method of studying natural science should not go by the way of mathematics. Aristotle is implicitly making a differentiation between *a priori* and *a posteriori* knowledge, with the mathematical arguments being a  *a priori* and the arguments about nature, poetic citations and concrete arguments coming from *a posteriori* knowledge. 
 
+# Book 3
+
+Here is a list of the main questions of philosophy:
+
+- Does the investigation of causes belong to one science or to several?
+    - Aristotle would have said that it belongs to one science. However, since the birth of [modern science](https://en.wikipedia.org/wiki/Four_causes#Modern_science), physics has come to handle material and efficient causes, while metaphysics has been left to handle the others.
+- Should metaphysics survey only the first principles of substance, or also the principles on which people base their proofs (i.e., logic)?
+    - Yes, metaphysics should survey both the first principles of substances and the principles of argumentation. In the modern era, [it is unclear whether the study of logic properly belongs in mathematics or philosophy departments](https://plato.stanford.edu/entries/logic-classical/#Int).
+- If metaphysics deals with substance, should it deal with all substances, or should more than one science study them?
+    - For Aristotle, metaphysics should deal with all substances. It deals with sensible substances (ontology) and non-sensible substances (theology). In the modern era, philosophy and theology are viewed as two distinct disciplines, unlike in medieval times.
+
+
 Discuss on [Github](https://github.com/vtomole/vtomole.github.io/discussions/134)
