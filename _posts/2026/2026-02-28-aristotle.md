@@ -7,6 +7,7 @@ categories: twentytwentysix
 
 - [Physics](#physics)
 - [Metaphysics](#metaphysics)
+- [Nicomachean Ethics](#Nicomachean Ethics)
 
 ## Physics
 
@@ -92,5 +93,8 @@ Here is a list of the main questions of philosophy:
 - If metaphysics deals with substance, should it deal with all substances, or should more than one science study them?
     - For Aristotle, metaphysics should deal with all substances. It deals with sensible substances (ontology) and non-sensible substances (theology). In the modern era, philosophy and theology are viewed as two distinct disciplines, unlike in medieval times.
 
+
+## Nicomachean Ethics
+- Will not the knowledge of it, then, have a great influence on life? Shall we not, like archers who have a mark to aim at, be more likely to hit upon what is right? If so, we must try, in outline at least, to determine what it is, and of which of the sciences or capacities it is the object. It would seem to belong to the most authoritative art and that which is most truly the master art. And politics appears to be of this nature
 
 Discuss on [Github](https://github.com/vtomole/vtomole.github.io/discussions/134)
